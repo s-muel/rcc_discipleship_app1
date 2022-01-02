@@ -30,6 +30,7 @@ class MainPage extends StatelessWidget {
           ]),
       body: ListView(
         children: [
+          // 1 MOG
           InkWell(
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -39,19 +40,109 @@ class MainPage extends StatelessWidget {
             child: const MOGProfileWidget(
               picture: "assets/images/papa.jpg",
               name: "Pastor Ebo Jackson",
-              numberOfDisciples: "30",
+              numberOfDisciples: "20",
             ),
           ),
+          // 2 MOG
           const MOGProfileWidget(
-              picture:
-                  "https://scontent.facc1-1.fna.fbcdn.net/v/t1.6435-9/43255777_1683840948410082_2134138634855514112_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=8bfeb9&_nc_eui2=AeHF7JQ2AivRyB682puSZ5TqX4_okobPvL1fj-iShs-8vYbS9ib4znjR0qdRiY2uflo7zQEjoHOk2s-Jq52KwqRv&_nc_ohc=oxPerE3MMT8AX-P8N6l&_nc_ht=scontent.facc1-1.fna&oh=00_AT-2MZb7awVXnLExEEqpKlSVZothFJv69Rq97NEWpT8gPg&oe=61F046B7",
+              picture: "assets/images/papa_ernesto.jpg",
               name: "Pastor Ernest Adjei",
-              numberOfDisciples: "50"),
+              numberOfDisciples: "15"),
+          // 3 MOG
           const MOGProfileWidget(
-              picture:
-                  "https://scontent.facc1-1.fna.fbcdn.net/v/t1.6435-9/43255777_1683840948410082_2134138634855514112_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=8bfeb9&_nc_eui2=AeHF7JQ2AivRyB682puSZ5TqX4_okobPvL1fj-iShs-8vYbS9ib4znjR0qdRiY2uflo7zQEjoHOk2s-Jq52KwqRv&_nc_ohc=oxPerE3MMT8AX-P8N6l&_nc_ht=scontent.facc1-1.fna&oh=00_AT-2MZb7awVXnLExEEqpKlSVZothFJv69Rq97NEWpT8gPg&oe=61F046B7",
-              name: "Pastor Ernest Adjei",
-              numberOfDisciples: "50")
+              picture: "assets/images/papa_andy.jpg",
+              name: "Pastor Balthassar Anderson",
+              numberOfDisciples: "10"),
+          // 4 MOG
+          const MOGProfileWidget(
+              picture: "assets/images/papa_kelvin.jpg",
+              name: "Pastor Kelvin Osei Safah",
+              numberOfDisciples: "10"),
+          // 5.1 MOG
+          const MOGProfileWidget(
+              picture: "assets/images/mama_rita.jpg",
+              name: "Lady Pastor Rita Kandah",
+              numberOfDisciples: "8.."),
+          // 5 MOG
+          const MOGProfileWidget(
+              picture: "assets/images/default2.jpg",
+              name: "Pastor James Amoah",
+              numberOfDisciples: "8.."),
+          // 6 MOG
+          const MOGProfileWidget(
+              picture: "assets/images/papa_wilber.jpg",
+              name: "Pastor Wilberforce Owusu Kyere",
+              numberOfDisciples: "10"),
+          // 7 MOG
+          const MOGProfileWidget(
+              picture: "assets/images/papa_kofy.jpg",
+              name: "Pastor Francis Class-Peters",
+              numberOfDisciples: "8.."),
+          // 8 MOG
+          const MOGProfileWidget(
+              picture: "assets/images/default2.jpg",
+              name: "Pastor  Wilfred Mensah",
+              numberOfDisciples: "8.."),
+          // 9 MOG
+          const MOGProfileWidget(
+              picture: "assets/images/papa_baah.jpg",
+              name: "Pastor Isaac Baah",
+              numberOfDisciples: "15"),
+          // 10 MOG
+          const MOGProfileWidget(
+              picture: "assets/images/default2.jpg",
+              name: "Pastor  Benjamin Kojo Antwi",
+              numberOfDisciples: "15"),
+          // 11 MOG
+          const MOGProfileWidget(
+              picture: "assets/images/papa_sammy.jpg",
+              name: "Pastor Samuel Essuman",
+              numberOfDisciples: "8.."),
+          // 12.1 MOG
+          const MOGProfileWidget(
+              picture: "assets/images/papa_sterling.jpg",
+              name: "Pastor Prince Mensah",
+              numberOfDisciples: "8.."),
+          // 12 MOG
+          const MOGProfileWidget(
+              picture: "assets/images/default1.jpg",
+              name: "Pastor Daniel Kojo Ampah",
+              numberOfDisciples: "8.."),
+          // 13 MOG
+          const MOGProfileWidget(
+              picture: "assets/images/papa_bismark.jpg",
+              name: "Pastor  Bismark Prah",
+              numberOfDisciples: "8.."),
+          // 14 MOG
+          const MOGProfileWidget(
+              picture: "assets/images/papa_steph.jpg",
+              name: "Pastor  Stephen Arthur",
+              numberOfDisciples: "8.."),
+          // 15 MOG
+          const MOGProfileWidget(
+              picture: "assets/images/default2.jpg",
+              name: "Pastor Nuworsa Akumani",
+              numberOfDisciples: "8.."),
+          // 16 MOG
+          const MOGProfileWidget(
+              picture: "assets/images/papa_sena.jpg",
+              name: "Pastor Sena Akumani",
+              numberOfDisciples: "8.."),
+          // 17 MOG
+          const MOGProfileWidget(
+              picture: "assets/images/papa_kandah.jpg",
+              name: "Pastor  Daniel Kandah",
+              numberOfDisciples: "8.."),
+          // 18 MOG
+          const MOGProfileWidget(
+              picture: "assets/images/default1.jpg",
+              name: "Pastor   James Addo",
+              numberOfDisciples: "8.."),
+          // 19 MOG
+          const MOGProfileWidget(
+              picture: "assets/images/default1.jpg",
+              name: "Pastor Nicholas Effum",
+              numberOfDisciples: "8.."),
         ],
       ),
     );
@@ -75,7 +166,7 @@ class MOGProfileWidget extends StatelessWidget {
       elevation: 10,
       child: ListTile(
         leading: CircleAvatar(
-          backgroundImage: AssetImage('assets/images/papa.jpg'),
+          backgroundImage: AssetImage(picture),
           radius: 30,
         ),
         title: Text(name),
