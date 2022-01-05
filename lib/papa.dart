@@ -10,26 +10,36 @@ class Papa extends StatefulWidget {
 class _PapaState extends State<Papa> {
   final List<Map<String, dynamic>> database = [
     {
-      'name': 'Pastor Ernest Adjei',
-      'picture':
-          "https://scontent.facc1-1.fna.fbcdn.net/v/t1.6435-9/43255777_1683840948410082_2134138634855514112_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=8bfeb9&_nc_eui2=AeHF7JQ2AivRyB682puSZ5TqX4_okobPvL1fj-iShs-8vYbS9ib4znjR0qdRiY2uflo7zQEjoHOk2s-Jq52KwqRv&_nc_ohc=oxPerE3MMT8AX-P8N6l&_nc_ht=scontent.facc1-1.fna&oh=00_AT-2MZb7awVXnLExEEqpKlSVZothFJv69Rq97NEWpT8gPg&oe=61F046B7",
-      'number': "0230145888",
+      'name': 'Ernest Adjei',
+      'picture': "assets/images/papa_ernesto.jpg",
+      'number': "+233 24 522 4866",
+      'GPS_Location': "Anaji Street",
+    },
+    {
+      'name': 'Kelvin Sefa',
+      'picture': "assets/images/papa_kelvin.jpg",
+      'number': "+233 54 745 2840",
       'GPS_Location': "WS-23, Ota, Anaji Street",
     },
     {
-      'name': 'Pastor Kelvin Sefa',
-      'picture':
-          "https://scontent.facc1-1.fna.fbcdn.net/v/t1.6435-9/51225985_1193061190851497_5078222258225283072_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=730e14&_nc_eui2=AeH7g69wWSSBcA0Q6hSsJ7XpZpm35RGY2CRmmbflEZjYJAfpfw9NCy2PfnvPruaTgXK8oh2nLdqUDkwskK_yGAdr&_nc_ohc=MZCLOl_C8qoAX-dxcUx&_nc_ht=scontent.facc1-1.fna&oh=00_AT9FjwAQmtjIueiBlNiiRtzsLrLhOuEhwpDn5mbwytWVSQ&oe=61F1176B",
-      'number': "0230145888",
+      'name': ' Balthassar Anderson',
+      'picture': "assets/images/papa_andy.jpg",
+      'number': "+233 24 476 4156",
       'GPS_Location': "WS-23, Ota, Anaji Street",
     },
     {
-      'name': 'Pastor Addy',
-      'picture':
-          "https://scontent.facc1-1.fna.fbcdn.net/v/t1.6435-9/43255777_1683840948410082_2134138634855514112_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=8bfeb9&_nc_eui2=AeHF7JQ2AivRyB682puSZ5TqX4_okobPvL1fj-iShs-8vYbS9ib4znjR0qdRiY2uflo7zQEjoHOk2s-Jq52KwqRv&_nc_ohc=oxPerE3MMT8AX-P8N6l&_nc_ht=scontent.facc1-1.fna&oh=00_AT-2MZb7awVXnLExEEqpKlSVZothFJv69Rq97NEWpT8gPg&oe=61F046B7",
-      'number': "0230145888",
+      'name': 'Rita Kandah',
+      'picture': "assets/images/mama_rita.jpg",
+      'number': "+233 24 476 4156",
       'GPS_Location': "WS-23, Ota, Anaji Street",
-    }
+    },
+    {
+      'name': 'Nicholas Effum',
+      'picture': "assets/images/default1.jpg",
+      'number': "+233 24 476 4156",
+      'GPS_Location': "WS-23, Ota, Anaji Street",
+    },
+    
   ];
   @override
   Widget build(BuildContext context) {
@@ -40,9 +50,8 @@ class _PapaState extends State<Papa> {
             Text("Pastor Ebo's Disciples"),
             SizedBox(width: 50),
             CircleAvatar(
-              radius: 25,
-              backgroundImage: NetworkImage(
-                  'https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/229277114_646611003399083_1277748776024873130_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeHJot-sRWjkCKzmSnlxeF1vnD627uOK4NmcPrbu44rg2ThT8N-6ScZMoHNP4k1AZODUTqT6OiLg5dsfz3sHX1Uc&_nc_ohc=uhMns-HaO9cAX8gtsGy&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&oh=00_AT-MTk8lA-SBi-J6ga8zo3CXecvlNnW0xmKsAzsaEfDYxQ&oe=61CE0B86'),
+              radius: 23,
+              backgroundImage: AssetImage('assets/images/papa.jpg'),
             ),
           ],
         ),
@@ -83,9 +92,11 @@ class PapasDisciplesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
+      collapsedBackgroundColor: Colors.green[50],
+      collapsedIconColor: Colors.green,
       leading: CircleAvatar(
         radius: 20,
-        backgroundImage: NetworkImage(picture),
+        backgroundImage: AssetImage(picture),
       ),
       title: Text(name),
       children: [
