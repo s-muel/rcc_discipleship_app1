@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:my_todo_app1/add_member.dart';
 import 'package:my_todo_app1/add_member_page.dart';
 import 'package:my_todo_app1/create_todo_view.dart';
 import 'package:my_todo_app1/details_page.dart';
@@ -150,6 +151,7 @@ class MainPage extends StatelessWidget {
           shape: const CircularNotchedRectangle(),
           child: Row(
             children: [
+              
               IconButton(icon: const Icon(Icons.menu), onPressed: () {}),
               const Spacer(),
               IconButton(icon: const Icon(Icons.search), onPressed: () {}),
@@ -163,7 +165,7 @@ class MainPage extends StatelessWidget {
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(
                 builder: (context) {
-                  return AddMember();
+                  return AddMembers();
                 },
               ));
             }),

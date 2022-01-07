@@ -100,22 +100,19 @@ class AddMember extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: TextButton(
-                  onPressed: () {
-                    if (createATodokey.currentState!.validate()) {
-                      // send to database
-                    } else {
-                      // dont send to database
-                    }
-                  },
-                  child: const Text(
-                    "Create",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  style: TextButton.styleFrom(backgroundColor: Colors.blue),
+              TextButton(
+                onPressed: () {
+                  if (createATodokey.currentState!.validate()) {
+                    // send to database
+                  } else {
+                    // dont send to database
+                  }
+                },
+                child: const Text(
+                  "Create",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
+                style: TextButton.styleFrom(backgroundColor: Colors.blue),
               )
             ],
           ),
