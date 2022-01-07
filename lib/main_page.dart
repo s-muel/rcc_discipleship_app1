@@ -151,8 +151,8 @@ class MainPage extends StatelessWidget {
           shape: const CircularNotchedRectangle(),
           child: Row(
             children: [
-              
-              IconButton(icon: const Icon(Icons.menu), onPressed: () {}),
+              IconButton(
+                  icon: const Icon(Icons.group_rounded), onPressed: () {}),
               const Spacer(),
               IconButton(icon: const Icon(Icons.search), onPressed: () {}),
               IconButton(icon: const Icon(Icons.more_vert), onPressed: () {}),

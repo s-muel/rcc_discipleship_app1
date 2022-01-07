@@ -28,12 +28,13 @@ class _AddMembersState extends State<AddMembers> {
   final TextEditingController auxiliaryController = TextEditingController();
 
 //auxiliary
-  String dropdownvalue = 'Male';
+  String dropdownvalue = 'Gender';
+
   String shepherd = 'Shepherd';
   String auxiliary = 'Auxiliary';
 
   // List of items in our dropdown menu
-  var items = ['Male', 'Female'];
+  var items = ['Gender', 'Male', 'Female'];
   var shepherdItems = ['Shepherd', 'Papa', 'Papa Andy'];
   var auxiliaryItems = ['Auxiliary', 'Prayer', 'Singing', 'Usher'];
 
@@ -41,6 +42,7 @@ class _AddMembersState extends State<AddMembers> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.green,
         title: const Text("Add New Member"),
       ),
       body: Form(
@@ -66,9 +68,15 @@ class _AddMembersState extends State<AddMembers> {
                   }
                 },
                 decoration: const InputDecoration(
-                    label: Text("Fullname"),
+                    label: Text(
+                      "Fullname",
+                      style: TextStyle(color: Colors.green),
+                    ),
                     border: OutlineInputBorder(),
-                    icon: Icon(Icons.person)),
+                    icon: Icon(
+                      Icons.person,
+                      color: Colors.green,
+                    )),
               ),
               const SizedBox(
                 height: 30,
@@ -81,9 +89,10 @@ class _AddMembersState extends State<AddMembers> {
                   }
                 },
                 decoration: const InputDecoration(
-                    label: Text("Contact"),
+                    label:
+                        Text("Contact", style: TextStyle(color: Colors.green)),
                     border: OutlineInputBorder(),
-                    icon: Icon(Icons.call)),
+                    icon: Icon(Icons.call, color: Colors.green)),
               ),
               const SizedBox(
                 height: 50,
@@ -109,20 +118,24 @@ class _AddMembersState extends State<AddMembers> {
                         }
                       },
                       decoration: const InputDecoration(
-                          label: Text("Date of Birth"),
+                          label: Text("Date of Birth",
+                              style: TextStyle(color: Colors.green)),
                           border: OutlineInputBorder(),
-                          icon: Icon(Icons.calendar_today)),
+                          icon:
+                              Icon(Icons.calendar_today, color: Colors.green)),
                     ),
                   ),
                   const SizedBox(
                     width: 50,
                   ),
-                  const Icon(Icons.arrow_circle_down_sharp, color: Colors.blue),
+                  const Icon(Icons.arrow_circle_down_sharp,
+                      color: Colors.green),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: DropdownButton(
                       // Initial Value
                       value: dropdownvalue,
+                      style: TextStyle(color: Colors.green),
 
                       // Down Arrow Icon
 
@@ -157,19 +170,17 @@ class _AddMembersState extends State<AddMembers> {
                   }
                 },
                 decoration: const InputDecoration(
-                    label: Text("Location(GPS)"),
+                    label: Text("Location(GPS)",
+                        style: TextStyle(color: Colors.green)),
                     border: OutlineInputBorder(),
-                    icon: Icon(Icons.location_on_rounded)),
+                    icon: Icon(Icons.location_on_rounded, color: Colors.green)),
               ),
               const SizedBox(
                 height: 40,
               ),
               Row(
                 children: [
-                  const Icon(
-                    Icons.contact_mail,
-                    color: Colors.grey,
-                  ),
+                  const Icon(Icons.groups, color: Colors.green),
                   const SizedBox(
                     width: 15,
                   ),
@@ -185,7 +196,9 @@ class _AddMembersState extends State<AddMembers> {
                       child: DropdownButton(
                         // Initial Value
                         value: shepherd,
-                        hint: const Text("Shepherd"),
+                        style: const TextStyle(color: Colors.green),
+                        hint: const Text("Shepherd",
+                            style: TextStyle(color: Colors.green)),
 
                         // Down Arrow Icon
 
@@ -211,10 +224,7 @@ class _AddMembersState extends State<AddMembers> {
                   const SizedBox(
                     width: 10,
                   ),
-                  const Icon(
-                    Icons.group_add,
-                    color: Colors.grey,
-                  ),
+                  const Icon(Icons.group_add, color: Colors.green),
                   const SizedBox(
                     width: 10,
                   ),
@@ -230,6 +240,7 @@ class _AddMembersState extends State<AddMembers> {
                       child: DropdownButton(
                         // Initial Value
                         value: auxiliary,
+                        style: TextStyle(color: Colors.green),
                         hint: const Text("Shepherd"),
 
                         // Down Arrow Icon
@@ -273,7 +284,7 @@ class _AddMembersState extends State<AddMembers> {
                     "Add Member",
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
-                  style: TextButton.styleFrom(backgroundColor: Colors.blue),
+                  style: TextButton.styleFrom(backgroundColor: Colors.green),
                 ),
               ),
               const SizedBox(
