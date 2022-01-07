@@ -73,8 +73,8 @@ class _AddMembersState extends State<AddMembers> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.green,
+        //backgroundColor: Colors.white,
+        //  foregroundColor: Colors.green,
         centerTitle: true,
         elevation: 0,
         title: const Text("Add New Member"),

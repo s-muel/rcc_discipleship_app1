@@ -59,7 +59,7 @@ class _PapaState extends State<Papa> {
       ),
       body: ListView.separated(
         itemBuilder: (context, index) {
-          return PapasDisciplesWidget(
+          return DisciplesWidget(
               name: database[index]['name'],
               number: database[index]['number'],
               picture: database[index]['picture'],
@@ -76,8 +76,8 @@ class _PapaState extends State<Papa> {
   }
 }
 
-class PapasDisciplesWidget extends StatelessWidget {
-  const PapasDisciplesWidget({
+class DisciplesWidget extends StatelessWidget {
+  const DisciplesWidget({
     Key? key,
     required this.name,
     required this.number,
@@ -118,11 +118,11 @@ class PapasDisciplesWidget extends StatelessWidget {
   }
 }
 
-class PapasDiscipleWidget extends StatelessWidget {
-  const PapasDiscipleWidget({Key? key}) : super(key: key);
+// class PapasDiscipleWidget extends StatelessWidget {
+//   const PapasDiscipleWidget({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container();
+//   }
+// }

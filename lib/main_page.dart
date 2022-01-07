@@ -7,6 +7,7 @@ import 'package:my_todo_app1/details_page.dart';
 import 'package:my_todo_app1/papa.dart';
 import 'package:my_todo_app1/utilities.dart';
 
+import 'all_members_page.dart';
 import 'create_todo_view.dart';
 
 class MainPage extends StatelessWidget {
@@ -152,15 +153,52 @@ class MainPage extends StatelessWidget {
           child: Row(
             children: [
               IconButton(
-                  icon: const Icon(Icons.group_rounded), onPressed: () {}),
+                  icon: const Icon(
+                    Icons.group_rounded,
+                    color: Colors.green
+                  ),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return  AllMembersPage();
+                    }));
+                  }),
+              InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return  AllMembersPage();
+                    }));
+                  },
+                  child: const Text(
+                    "All members",
+                    style: TextStyle(fontSize: 10),
+                  )),
               const Spacer(),
-              IconButton(icon: const Icon(Icons.search), onPressed: () {}),
-              IconButton(icon: const Icon(Icons.more_vert), onPressed: () {}),
+              InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return const AdminAlert();
+                    }));
+                  },
+                  child: const Text("Help", style: TextStyle(fontSize: 10))),
+              IconButton(
+                  icon: const Icon(
+                    Icons.help_center_rounded,
+                    color: Colors.green,
+                  ),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return const AdminAlert();
+                    }));
+                  }),
             ],
           ),
         ),
         floatingActionButton: FloatingActionButton(
-            backgroundColor: Colors.blue,
+            backgroundColor: Colors.green,
             splashColor: Colors.green,
             child: const Icon(Icons.add),
             onPressed: () {
@@ -172,6 +210,43 @@ class MainPage extends StatelessWidget {
             }),
         floatingActionButtonLocation:
             FloatingActionButtonLocation.centerDocked);
+  }
+}
+
+class AdminAlert extends StatelessWidget {
+  const AdminAlert({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      actionsAlignment: MainAxisAlignment.center,
+      title: const Text("Settings/Help"),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: const [
+          Text("Contact Admin"),
+          Icon(Icons.call),
+          Text("+233557889037"),
+          Divider(
+            color: Colors.black,
+            indent: 10,
+          ),
+          Text("Email Admin"),
+          Icon(Icons.email),
+          Text("samuelessuman8@gmail.com"),
+        ],
+      ),
+      actions: [
+        TextButton(
+          child: const Text("Ok"),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        )
+      ],
+    );
   }
 }
 
