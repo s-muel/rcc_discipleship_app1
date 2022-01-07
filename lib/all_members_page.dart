@@ -1,7 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:my_todo_app1/controllers/member_controller.dart';
+import 'package:my_todo_app1/models/member_model.dart';
 
-class AllMembersPage extends StatelessWidget {
+class AllMembersPage extends StatefulWidget {
   AllMembersPage({Key? key}) : super(key: key);
+
+  @override
+  State<AllMembersPage> createState() => _AllMembersPageState();
+}
+
+class _AllMembersPageState extends State<AllMembersPage> {
+  final MemberController _memberController = MemberController();
+
+  final List<Members> allMembers = [];
+
+  void initState() {
+    _memberController.getAllMembers().then((member) {
+      for (Members element in member) {
+        allMembers.add(element);
+        setState(() {});
+        //  print("these are members $member");
+      }
+    });
+    super.initState();
+  }
 
   final List<Map<String, dynamic>> database = [
     {
@@ -11,6 +33,7 @@ class AllMembersPage extends StatelessWidget {
       'GPS_Location': "Anaji Street",
     },
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,17 +43,17 @@ class AllMembersPage extends StatelessWidget {
       body: ListView.separated(
           itemBuilder: (context, index) {
             return AllDisciplesWidget(
-                name: database[index]['name'],
-                number: database[index]['number'],
-                picture: database[index]['picture'],
-                GPSLocation: database[index]['GPS_Location']);
+                name: allMembers[index].name,
+                number: allMembers[index].contact,
+                picture: allMembers[index].name,
+                GPSLocation: allMembers[index].name);
           },
           separatorBuilder: (context, index) {
             return const Divider(
               height: 20,
             );
           },
-          itemCount: database.length),
+          itemCount: allMembers.length),
     );
   }
 }
