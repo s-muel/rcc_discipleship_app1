@@ -4,8 +4,6 @@ import 'package:my_todo_app1/main_page.dart';
 import 'home_view.dart';
 
 void main() {
-
-  
   runApp(const MyApp());
 }
 
@@ -18,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
       //This HomeView() is a class in home_view.dart
       home: const MainPage(),

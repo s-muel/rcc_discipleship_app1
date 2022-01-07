@@ -160,6 +160,7 @@ class MainPage extends StatelessWidget {
           ),
         ),
         floatingActionButton: FloatingActionButton(
+            backgroundColor: Colors.blue,
             splashColor: Colors.green,
             child: const Icon(Icons.add),
             onPressed: () {
