@@ -8,10 +8,34 @@ import 'package:my_todo_app1/papa.dart';
 import 'package:my_todo_app1/utilities.dart';
 
 import 'all_members_page.dart';
+import 'controllers/member_controller.dart';
 import 'create_todo_view.dart';
+import 'models/member_model.dart';
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  final MemberController _memberController = MemberController();
+  final List<Members> papa_ernesto = [];
+
+  void initState() {
+    _memberController.getAllMembers().then((member) {
+      for (Members element in member) {
+        if (element.shepherd == "Ps Ernest Adjei") {
+          papa_ernesto.add(element);
+        }
+
+        setState(() {});
+        //  print("these are members $member");
+      }
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +62,7 @@ class MainPage extends StatelessWidget {
                   return const Papa();
                 }));
               },
-              child: const MOGProfileWidget(
+              child:  MOGProfileWidget(
                 picture: "assets/images/papa.jpg",
                 name: "Pastor Ebo Jackson",
                 numberOfDisciples: "20",
@@ -51,103 +75,103 @@ class MainPage extends StatelessWidget {
                   return const DetailsPage();
                 }));
               },
-              child: const MOGProfileWidget(
+              child: MOGProfileWidget(
                   picture: "assets/images/papa_ernesto.jpg",
                   name: "Pastor Ernest Adjei",
-                  numberOfDisciples: "15"),
+                  numberOfDisciples: papa_ernesto.length)
             ),
             // 3 MOG
-            const MOGProfileWidget(
+             MOGProfileWidget(
                 picture: "assets/images/papa_andy.jpg",
                 name: "Pastor Balthassar Anderson",
                 numberOfDisciples: "10"),
             // 4 MOG
-            const MOGProfileWidget(
+             MOGProfileWidget(
                 picture: "assets/images/papa_kelvin.jpg",
                 name: "Pastor Kelvin Osei Safah",
                 numberOfDisciples: "10"),
             // 5.1 MOG
-            const MOGProfileWidget(
+             MOGProfileWidget(
                 picture: "assets/images/mama_rita.jpg",
                 name: "Lady Pastor Rita Kandah",
                 numberOfDisciples: "8.."),
             // 5 MOG
-            const MOGProfileWidget(
+             MOGProfileWidget(
                 picture: "assets/images/default2.jpg",
                 name: "Pastor James Amoah",
                 numberOfDisciples: "8.."),
             // 6 MOG
-            const MOGProfileWidget(
+             MOGProfileWidget(
                 picture: "assets/images/papa_wilber.jpg",
                 name: "Pastor Wilberforce Owusu Kyere",
                 numberOfDisciples: "10"),
             // 7 MOG
-            const MOGProfileWidget(
+             MOGProfileWidget(
                 picture: "assets/images/papa_kofy.jpg",
                 name: "Pastor Francis Class-Peters",
                 numberOfDisciples: "8.."),
             // 8 MOG
-            const MOGProfileWidget(
+             MOGProfileWidget(
                 picture: "assets/images/default2.jpg",
                 name: "Pastor  Wilfred Mensah",
                 numberOfDisciples: "8.."),
             // 9 MOG
-            const MOGProfileWidget(
+             MOGProfileWidget(
                 picture: "assets/images/papa_baah.jpg",
                 name: "Pastor Isaac Baah",
                 numberOfDisciples: "15"),
             // 10 MOG
-            const MOGProfileWidget(
+             MOGProfileWidget(
                 picture: "assets/images/default2.jpg",
                 name: "Pastor  Benjamin Kojo Antwi",
                 numberOfDisciples: "15"),
             // 11 MOG
-            const MOGProfileWidget(
+             MOGProfileWidget(
                 picture: "assets/images/papa_sammy.jpg",
                 name: "Pastor Samuel Essuman",
                 numberOfDisciples: "8.."),
             // 12.1 MOG
-            const MOGProfileWidget(
+            MOGProfileWidget(
                 picture: "assets/images/papa_sterling.jpg",
                 name: "Pastor Prince Mensah",
                 numberOfDisciples: "8.."),
             // 12 MOG
-            const MOGProfileWidget(
+             MOGProfileWidget(
                 picture: "assets/images/default1.jpg",
                 name: "Pastor Daniel Kojo Ampah",
                 numberOfDisciples: "8.."),
             // 13 MOG
-            const MOGProfileWidget(
+             MOGProfileWidget(
                 picture: "assets/images/papa_bismark.jpg",
                 name: "Pastor  Bismark Prah",
                 numberOfDisciples: "8.."),
             // 14 MOG
-            const MOGProfileWidget(
+             MOGProfileWidget(
                 picture: "assets/images/papa_steph.jpg",
                 name: "Pastor  Stephen Arthur",
                 numberOfDisciples: "8.."),
             // 15 MOG
-            const MOGProfileWidget(
+             MOGProfileWidget(
                 picture: "assets/images/default2.jpg",
                 name: "Pastor Nuworsa Akumani",
                 numberOfDisciples: "8.."),
             // 16 MOG
-            const MOGProfileWidget(
+             MOGProfileWidget(
                 picture: "assets/images/papa_sena.jpg",
                 name: "Pastor Sena Akumani",
                 numberOfDisciples: "8.."),
             // 17 MOG
-            const MOGProfileWidget(
+             MOGProfileWidget(
                 picture: "assets/images/papa_kandah.jpg",
                 name: "Pastor  Daniel Kandah",
                 numberOfDisciples: "8.."),
             // 18 MOG
-            const MOGProfileWidget(
+             MOGProfileWidget(
                 picture: "assets/images/default1.jpg",
                 name: "Pastor   James Addo",
                 numberOfDisciples: "8.."),
             // 19 MOG
-            const MOGProfileWidget(
+             MOGProfileWidget(
                 picture: "assets/images/default1.jpg",
                 name: "Pastor Nicholas Effum",
                 numberOfDisciples: "8.."),
@@ -255,15 +279,15 @@ class AdminAlert extends StatelessWidget {
 }
 
 class MOGProfileWidget extends StatelessWidget {
-  const MOGProfileWidget({
+   MOGProfileWidget({
     Key? key,
     required this.picture,
     required this.name,
-    required this.numberOfDisciples,
+     this.numberOfDisciples,
   }) : super(key: key);
   final String picture;
   final String name;
-  final String numberOfDisciples;
+   var numberOfDisciples;
 
   @override
   Widget build(BuildContext context) {
@@ -298,7 +322,7 @@ class MOGProfileWidget extends StatelessWidget {
               color: Colors.green,
             ),
             Text(
-              numberOfDisciples,
+              numberOfDisciples.toString(),
               style: const TextStyle(color: Colors.green),
             ),
           ],

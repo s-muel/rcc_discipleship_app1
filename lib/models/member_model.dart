@@ -16,7 +16,7 @@ class Members {
     // required this.s,
     required this.name,
     //  required this.dob,
-    // required  this.shepherd,
+  required  this.shepherd,
     required this.picture,
     required this.contact,
     //  required this.whatsapp,
@@ -37,7 +37,7 @@ class Members {
   // String s;
   String name;
   // DateTime dob;
-  // String shepherd;
+ String shepherd;
   String picture;
   String contact;
   // String whatsapp;
@@ -59,7 +59,7 @@ class Members {
         // s: json["S/№"],
         name: json["NAME"],
         // dob: DateTime.parse(json["DOB"]),
-        // shepherd: json["SHEPHERD"],
+        shepherd: json["SHEPHERD"],
         picture: json["PICTURE"],
         contact: json["CONTACT"],
         // whatsapp: json["WHATSAPP"],
@@ -81,7 +81,7 @@ class Members {
         // "S/№": s,
         "NAME": name,
         // "DOB": dob.toIso8601String(),
-        // "SHEPHERD": shepherd,
+        "SHEPHERD": shepherd,
         "PICTURE": picture,
         "CONTACT": contact,
         // "WHATSAPP": whatsapp,

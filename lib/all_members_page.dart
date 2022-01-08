@@ -11,6 +11,7 @@ class AllMembersPage extends StatefulWidget {
 
 class _AllMembersPageState extends State<AllMembersPage> {
   final MemberController _memberController = MemberController();
+  var total;
 
   final List<Members> allMembers = [];
 
@@ -38,8 +39,15 @@ class _AllMembersPageState extends State<AllMembersPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('All Members'),
-      ),
+          title: Row(
+        children: [
+          const Text("Total Members"),
+          SizedBox(
+            width: 20,
+          ),
+          Text(allMembers.length.toString())
+        ],
+      )),
       body: ListView.separated(
           itemBuilder: (context, index) {
             return AllDisciplesWidget(
@@ -50,6 +58,7 @@ class _AllMembersPageState extends State<AllMembersPage> {
               digitalAdd: allMembers[index].digitalAdd,
               auxilliary: allMembers[index].auxilliary,
               birthdate: allMembers[index].birthday,
+              shepherd: allMembers[index].shepherd,
             );
           },
           separatorBuilder: (context, index) {
@@ -72,6 +81,7 @@ class AllDisciplesWidget extends StatelessWidget {
     required this.digitalAdd,
     required this.auxilliary,
     required this.birthdate,
+    required this.shepherd,
   }) : super(key: key);
   final String name;
   final String number;
@@ -80,6 +90,7 @@ class AllDisciplesWidget extends StatelessWidget {
   final String digitalAdd;
   final String auxilliary;
   final String birthdate;
+  final String shepherd;
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +102,25 @@ class AllDisciplesWidget extends StatelessWidget {
         backgroundImage: NetworkImage(picture),
       ),
       title: Text(name),
-      subtitle: Text('Auxilliary :   $auxilliary'),
+      subtitle: Row(
+        children: [
+          const Icon(
+            Icons.groups,
+            color: Colors.green,
+          ),
+          const SizedBox(
+            width: 5,
+          ),
+          const Text(
+            'shepherd : ',
+            style: TextStyle(fontSize: 13, color: Colors.green),
+          ),
+          Text(
+            shepherd,
+            style: const TextStyle(fontSize: 14),
+          ),
+        ],
+      ),
       // subtitle: Text("hello am subtite"),
       children: [
         ListTile(
