@@ -45,10 +45,17 @@ class MainPage extends StatelessWidget {
               ),
             ),
             // 2 MOG
-            const MOGProfileWidget(
-                picture: "assets/images/papa_ernesto.jpg",
-                name: "Pastor Ernest Adjei",
-                numberOfDisciples: "15"),
+            InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const DetailsPage();
+                }));
+              },
+              child: const MOGProfileWidget(
+                  picture: "assets/images/papa_ernesto.jpg",
+                  name: "Pastor Ernest Adjei",
+                  numberOfDisciples: "15"),
+            ),
             // 3 MOG
             const MOGProfileWidget(
                 picture: "assets/images/papa_andy.jpg",
@@ -153,21 +160,18 @@ class MainPage extends StatelessWidget {
           child: Row(
             children: [
               IconButton(
-                  icon: const Icon(
-                    Icons.group_rounded,
-                    color: Colors.green
-                  ),
+                  icon: const Icon(Icons.group_rounded, color: Colors.green),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return  AllMembersPage();
+                      return AllMembersPage();
                     }));
                   }),
               InkWell(
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return  AllMembersPage();
+                      return AllMembersPage();
                     }));
                   },
                   child: const Text(

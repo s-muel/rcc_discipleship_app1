@@ -43,10 +43,14 @@ class _AllMembersPageState extends State<AllMembersPage> {
       body: ListView.separated(
           itemBuilder: (context, index) {
             return AllDisciplesWidget(
-                name: allMembers[index].name,
-                number: allMembers[index].contact,
-                picture: allMembers[index].name,
-                GPSLocation: allMembers[index].name);
+              name: allMembers[index].name,
+              number: allMembers[index].contact,
+              picture: allMembers[index].picture,
+              gPSLocation: allMembers[index].homeAddress,
+              digitalAdd: allMembers[index].digitalAdd,
+              auxilliary: allMembers[index].auxilliary,
+              birthdate: allMembers[index].birthday,
+            );
           },
           separatorBuilder: (context, index) {
             return const Divider(
@@ -64,12 +68,18 @@ class AllDisciplesWidget extends StatelessWidget {
     required this.name,
     required this.number,
     required this.picture,
-    required this.GPSLocation,
+    required this.gPSLocation,
+    required this.digitalAdd,
+    required this.auxilliary,
+    required this.birthdate,
   }) : super(key: key);
   final String name;
   final String number;
   final String picture;
-  final String GPSLocation;
+  final String gPSLocation;
+  final String digitalAdd;
+  final String auxilliary;
+  final String birthdate;
 
   @override
   Widget build(BuildContext context) {
@@ -81,17 +91,41 @@ class AllDisciplesWidget extends StatelessWidget {
         backgroundImage: NetworkImage(picture),
       ),
       title: Text(name),
+      subtitle: Text('Auxilliary :   $auxilliary'),
+      // subtitle: Text("hello am subtite"),
       children: [
         ListTile(
           trailing: const Icon(Icons.phone, color: Colors.green),
           title: const Text("Number"),
-          subtitle: Text(number, style: const TextStyle(color: Colors.green)),
+          subtitle:
+              Text("0$number", style: const TextStyle(color: Colors.green)),
         ),
         ListTile(
-          title: const Text("GPS Location"),
-          subtitle: Text(GPSLocation),
+          title: const Text("Digital Address         /    Home Location"),
+          subtitle: Row(
+            children: [
+              Text(digitalAdd),
+              const SizedBox(
+                width: 10,
+              ),
+              Text(
+                gPSLocation,
+                maxLines: 1,
+                overflow: TextOverflow.clip,
+                softWrap: false,
+              )
+            ],
+          ),
           trailing: const Icon(
             Icons.location_on,
+            color: Colors.blue,
+          ),
+        ),
+        ListTile(
+          title: const Text("Birthdate"),
+          subtitle: Text(birthdate),
+          trailing: const Icon(
+            Icons.calendar_today_rounded,
             color: Colors.blue,
           ),
         ),
