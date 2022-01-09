@@ -23,7 +23,7 @@
   </intent>
 </queries>
 
-
+   <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="Reapers Discipleship"
         android:icon="@mipmap/ic_launcher">
@@ -62,4 +62,5 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
+
 </manifest>
