@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_todo_app1/controllers/member_controller.dart';
 import 'package:my_todo_app1/models/member_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AllMembersPage extends StatefulWidget {
   AllMembersPage({Key? key}) : super(key: key);
@@ -124,10 +125,15 @@ class AllDisciplesWidget extends StatelessWidget {
       // subtitle: Text("hello am subtite"),
       children: [
         ListTile(
-          trailing: const Icon(Icons.phone, color: Colors.green),
+          trailing: TextButton(
+            onPressed: () {
+              launch("tel:$number");
+            },
+            child: const Icon(Icons.call),
+          ),
+          // trailing: const Icon(Icons.phone, color: Colors.green),
           title: const Text("Number"),
-          subtitle:
-              Text("0$number", style: const TextStyle(color: Colors.green)),
+          subtitle: Text(number, style: const TextStyle(color: Colors.green)),
         ),
         ListTile(
           title: const Text("Digital Address         /    Home Location"),

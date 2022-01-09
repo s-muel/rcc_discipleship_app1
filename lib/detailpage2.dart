@@ -4,83 +4,14 @@ import 'package:my_todo_app1/all_members_page.dart';
 import 'controllers/member_controller.dart';
 import 'models/member_model.dart';
 
-class DetailsPage extends StatefulWidget {
-  const DetailsPage({Key? key}) : super(key: key);
+class PapaWilfred extends StatefulWidget {
+  const PapaWilfred({Key? key}) : super(key: key);
 
   @override
-  State<DetailsPage> createState() => _DetailsPageState();
+  _PapaWilfredState createState() => _PapaWilfredState();
 }
 
-class _DetailsPageState extends State<DetailsPage> {
-  final MemberController _memberController = MemberController();
-
-  final List<Members> papa_ernesto = [];
-
-  void initState() {
-    _memberController.getAllMembers().then((member) {
-      for (Members element in member) {
-        if (element.shepherd == "Ps Ernest Adjei") {
-          papa_ernesto.add(element);
-        }
-
-        setState(() {});
-        //  print("these are members $member");
-      }
-    });
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Row(
-          children: [
-            const Text("Ps Ernest Adjei"),
-            const SizedBox(width: 50),
-            const CircleAvatar(
-              radius: 15,
-              backgroundImage: AssetImage('assets/images/papa_ernesto.jpg'),
-            ),
-            const SizedBox(width: 10),
-            const Text("Total :  ", style: TextStyle(fontSize: 10)),
-            Text(
-              papa_ernesto.length.toString(),
-              style: TextStyle(color: Colors.red[100], fontSize: 13),
-            ),
-          ],
-        ),
-        backgroundColor: Colors.green,
-      ),
-      body: ListView.separated(
-          itemBuilder: (context, index) {
-            return AllDisciplesWidget(
-                name: papa_ernesto[index].name,
-                number: papa_ernesto[index].contact,
-                picture: papa_ernesto[index].picture,
-                gPSLocation: papa_ernesto[index].homeAddress,
-                digitalAdd: papa_ernesto[index].digitalAdd,
-                auxilliary: papa_ernesto[index].auxilliary,
-                birthdate: papa_ernesto[index].birthday,
-                shepherd: papa_ernesto[index].shepherd);
-          },
-          separatorBuilder: (context, index) {
-            return const Divider();
-          },
-          itemCount: papa_ernesto.length),
-    );
-  }
-}
-
-class PapaAndy extends StatefulWidget {
-  const PapaAndy({Key? key}) : super(key: key);
-
-  @override
-  _PapaAndyState createState() => _PapaAndyState();
-}
-
-class _PapaAndyState extends State<PapaAndy> {
+class _PapaWilfredState extends State<PapaWilfred> {
   final MemberController _memberController = MemberController();
 
   final List<Members> papa_andy = [];
@@ -88,7 +19,7 @@ class _PapaAndyState extends State<PapaAndy> {
   void initState() {
     _memberController.getAllMembers().then((member) {
       for (Members element in member) {
-        if (element.shepherd == "Ps Balthassar Anderson") {
+        if (element.shepherd == "Ps Wilfred Mensah") {
           papa_andy.add(element);
         }
 
@@ -106,11 +37,11 @@ class _PapaAndyState extends State<PapaAndy> {
         centerTitle: true,
         title: Row(
           children: [
-            const Text("Ps Ernest Adjei"),
-            const SizedBox(width: 50),
+            const Text("Ps Wilfred Mensah"),
+            const SizedBox(width: 35),
             const CircleAvatar(
               radius: 15,
-              backgroundImage: AssetImage('assets/images/papa_andy.jpg'),
+              backgroundImage: AssetImage('assets/images/default2.jpg'),
             ),
             const SizedBox(width: 10),
             const Text("Total :  ", style: TextStyle(fontSize: 10)),
@@ -142,14 +73,14 @@ class _PapaAndyState extends State<PapaAndy> {
   }
 }
 
-class PapaKelvin extends StatefulWidget {
-  const PapaKelvin({Key? key}) : super(key: key);
+class PapaIsaac extends StatefulWidget {
+  const PapaIsaac({Key? key}) : super(key: key);
 
   @override
-  _PapaKelvinState createState() => _PapaKelvinState();
+  _PapaIsaacState createState() => _PapaIsaacState();
 }
 
-class _PapaKelvinState extends State<PapaKelvin> {
+class _PapaIsaacState extends State<PapaIsaac> {
   @override
   final MemberController _memberController = MemberController();
 
@@ -158,7 +89,7 @@ class _PapaKelvinState extends State<PapaKelvin> {
   void initState() {
     _memberController.getAllMembers().then((member) {
       for (Members element in member) {
-        if (element.shepherd == "Ps Kelvin Osei Safah") {
+        if (element.shepherd == "Ps Isaac Baah") {
           mog.add(element);
         }
 
@@ -176,11 +107,11 @@ class _PapaKelvinState extends State<PapaKelvin> {
         centerTitle: true,
         title: Row(
           children: [
-            const Text("Ps Kelvin Safah"),
-            const SizedBox(width: 50),
+            const Text("Ps Isaac Baah"),
+            const SizedBox(width: 35),
             const CircleAvatar(
               radius: 15,
-              backgroundImage: AssetImage('assets/images/papa_kelvin.jpg'),
+              backgroundImage: AssetImage('assets/images/papa_baah.jpg'),
             ),
             const SizedBox(width: 10),
             const Text("Total :  ", style: TextStyle(fontSize: 10)),
@@ -212,14 +143,14 @@ class _PapaKelvinState extends State<PapaKelvin> {
   }
 }
 
-class MadRita extends StatefulWidget {
-  const MadRita({Key? key}) : super(key: key);
+class PapaBen extends StatefulWidget {
+  const PapaBen({Key? key}) : super(key: key);
 
   @override
-  _MadRitaState createState() => _MadRitaState();
+  _PapaBenState createState() => _PapaBenState();
 }
 
-class _MadRitaState extends State<MadRita> {
+class _PapaBenState extends State<PapaBen> {
   @override
   final MemberController _memberController = MemberController();
 
@@ -228,7 +159,7 @@ class _MadRitaState extends State<MadRita> {
   void initState() {
     _memberController.getAllMembers().then((member) {
       for (Members element in member) {
-        if (element.shepherd == "Ps Rita Kandah") {
+        if (element.shepherd == "Ps Benjamin Kojo Antwi") {
           mog.add(element);
         }
 
@@ -246,11 +177,11 @@ class _MadRitaState extends State<MadRita> {
         centerTitle: true,
         title: Row(
           children: [
-            const Text("Ps Rita Kandah"),
+            const Text("Ps Benjamin Kojo Antwi"),
             const SizedBox(width: 50),
             const CircleAvatar(
               radius: 15,
-              backgroundImage: AssetImage('assets/images/mama_rita.jpg'),
+              backgroundImage: AssetImage('assets/images/default2.jpg'),
             ),
             const SizedBox(width: 10),
             const Text("Total :  ", style: TextStyle(fontSize: 10)),
@@ -282,14 +213,14 @@ class _MadRitaState extends State<MadRita> {
   }
 }
 
-class PapaAmoah extends StatefulWidget {
-  const PapaAmoah({Key? key}) : super(key: key);
+class PapaSammy extends StatefulWidget {
+  const PapaSammy({Key? key}) : super(key: key);
 
   @override
-  _PapaAmoahState createState() => _PapaAmoahState();
+  _PapaSammyState createState() => _PapaSammyState();
 }
 
-class _PapaAmoahState extends State<PapaAmoah> {
+class _PapaSammyState extends State<PapaSammy> {
   final MemberController _memberController = MemberController();
 
   final List<Members> mog = [];
@@ -298,7 +229,7 @@ class _PapaAmoahState extends State<PapaAmoah> {
   void initState() {
     _memberController.getAllMembers().then((member) {
       for (Members element in member) {
-        if (element.shepherd == "Ps James Amoah") {
+        if (element.shepherd == "Ps Samuel Essuman") {
           mog.add(element);
         }
 
@@ -316,11 +247,11 @@ class _PapaAmoahState extends State<PapaAmoah> {
         centerTitle: true,
         title: Row(
           children: [
-            const Text("Ps James Amoah"),
-            const SizedBox(width: 50),
+            const Text("Ps Samuel Essuman"),
+            const SizedBox(width: 20),
             const CircleAvatar(
               radius: 15,
-              backgroundImage: AssetImage('assets/images/default1.jpg'),
+              backgroundImage: AssetImage('assets/images/papa_sammy.jpg'),
             ),
             const SizedBox(width: 10),
             const Text("Total :  ", style: TextStyle(fontSize: 10)),
@@ -352,14 +283,14 @@ class _PapaAmoahState extends State<PapaAmoah> {
   }
 }
 
-class PapaWilber extends StatefulWidget {
-  const PapaWilber({Key? key}) : super(key: key);
+class PapaSterling extends StatefulWidget {
+  const PapaSterling({Key? key}) : super(key: key);
 
   @override
-  _PapaWilberState createState() => _PapaWilberState();
+  _PapaSterlingState createState() => _PapaSterlingState();
 }
 
-class _PapaWilberState extends State<PapaWilber> {
+class _PapaSterlingState extends State<PapaSterling> {
   @override
   final MemberController _memberController = MemberController();
 
@@ -368,7 +299,7 @@ class _PapaWilberState extends State<PapaWilber> {
   void initState() {
     _memberController.getAllMembers().then((member) {
       for (Members element in member) {
-        if (element.shepherd == "Ps Wilberforce Kyere") {
+        if (element.shepherd == "Ps Prince Mensah") {
           mog.add(element);
         }
 
@@ -385,11 +316,11 @@ class _PapaWilberState extends State<PapaWilber> {
       appBar: AppBar(
         title: Row(
           children: [
-            const Text("Ps Wilberforce Kyere"),
+            const Text("Ps Prince Mensah"),
             const SizedBox(width: 30),
             const CircleAvatar(
               radius: 15,
-              backgroundImage: AssetImage('assets/images/papa_wilber.jpg'),
+              backgroundImage: AssetImage('assets/images/papa_sterling.jpg'),
             ),
             const SizedBox(width: 5),
             const Text("Total :  ", style: TextStyle(fontSize: 10)),
@@ -421,14 +352,14 @@ class _PapaWilberState extends State<PapaWilber> {
   }
 }
 
-class PapaKofy extends StatefulWidget {
-  const PapaKofy({Key? key}) : super(key: key);
+class PapaFocus extends StatefulWidget {
+  const PapaFocus({Key? key}) : super(key: key);
 
   @override
-  _PapaKofyState createState() => _PapaKofyState();
+  _PapaFocusState createState() => _PapaFocusState();
 }
 
-class _PapaKofyState extends State<PapaKofy> {
+class _PapaFocusState extends State<PapaFocus> {
   @override
   final MemberController _memberController = MemberController();
 
@@ -437,7 +368,7 @@ class _PapaKofyState extends State<PapaKofy> {
   void initState() {
     _memberController.getAllMembers().then((member) {
       for (Members element in member) {
-        if (element.shepherd == "Ps Francis Class-Peters") {
+        if (element.shepherd == "Ps Daniel Kojo Ampah") {
           mog.add(element);
         }
 
@@ -455,12 +386,11 @@ class _PapaKofyState extends State<PapaKofy> {
         centerTitle: true,
         title: Row(
           children: [
-            const Text("Ps Francis Class-Peters",
-                style: TextStyle(fontSize: 16)),
+            const Text("Ps Daniel Kojo Ampah", style: TextStyle(fontSize: 16)),
             const SizedBox(width: 30),
             const CircleAvatar(
               radius: 15,
-              backgroundImage: AssetImage('assets/images/papa_kofy.jpg'),
+              backgroundImage: AssetImage('assets/images/default2.jpg'),
             ),
             const SizedBox(width: 4),
             const Text("Total :  ", style: TextStyle(fontSize: 10)),
@@ -492,14 +422,14 @@ class _PapaKofyState extends State<PapaKofy> {
   }
 }
 
-class PapaKandah extends StatefulWidget {
-  const PapaKandah({Key? key}) : super(key: key);
+class PapaSteph extends StatefulWidget {
+  const PapaSteph({Key? key}) : super(key: key);
 
   @override
-  _PapaKandahState createState() => _PapaKandahState();
+  _PapaStephState createState() => _PapaStephState();
 }
 
-class _PapaKandahState extends State<PapaKandah> {
+class _PapaStephState extends State<PapaSteph> {
   @override
   final MemberController _memberController = MemberController();
 
@@ -508,7 +438,7 @@ class _PapaKandahState extends State<PapaKandah> {
   void initState() {
     _memberController.getAllMembers().then((member) {
       for (Members element in member) {
-        if (element.shepherd == "Ps Daniel Kandah") {
+        if (element.shepherd == "Ps Stephen Arthur") {
           mog.add(element);
         }
 
@@ -526,11 +456,11 @@ class _PapaKandahState extends State<PapaKandah> {
         centerTitle: true,
         title: Row(
           children: [
-            const Text("Ps Daniel Kandah", style: TextStyle(fontSize: 16)),
+            const Text("Ps Daniel Kojo Ampah", style: TextStyle(fontSize: 16)),
             const SizedBox(width: 30),
             const CircleAvatar(
               radius: 15,
-              backgroundImage: AssetImage('assets/images/papa_kandah.jpg'),
+              backgroundImage: AssetImage('assets/images/papa_steph.jpg'),
             ),
             const SizedBox(width: 4),
             const Text("Total :  ", style: TextStyle(fontSize: 10)),
@@ -562,74 +492,283 @@ class _PapaKandahState extends State<PapaKandah> {
   }
 }
 
+class PapaBismark extends StatefulWidget {
+  const PapaBismark({Key? key}) : super(key: key);
 
-// class PapaKofy extends StatefulWidget {
-//   const PapaKofy({Key? key}) : super(key: key);
+  @override
+  _PapaBismarkState createState() => _PapaBismarkState();
+}
 
-//   @override
-//   _PapaKofyState createState() => _PapaKofyState();
-// }
+class _PapaBismarkState extends State<PapaBismark> {
+  @override
+  final MemberController _memberController = MemberController();
 
-// class _PapaKofyState extends State<PapaKofy> {
-//   @override
-//   final MemberController _memberController = MemberController();
+  final List<Members> mog = [];
 
-//   final List<Members> mog = [];
+  void initState() {
+    _memberController.getAllMembers().then((member) {
+      for (Members element in member) {
+        if (element.shepherd == "Ps Bismark Prah") {
+          mog.add(element);
+        }
 
-//   void initState() {
-//     _memberController.getAllMembers().then((member) {
-//       for (Members element in member) {
-//         if (element.shepherd == "Ps Francis Class-Peters") {
-//           mog.add(element);
-//         }
+        setState(() {});
+        //  print("these are members $member");
+      }
+    });
+    super.initState();
+  }
 
-//         setState(() {});
-//         //  print("these are members $member");
-//       }
-//     });
-//     super.initState();
-//   }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Row(
+          children: [
+            const Text("Ps Daniel Kojo Ampah", style: TextStyle(fontSize: 16)),
+            const SizedBox(width: 30),
+            const CircleAvatar(
+              radius: 15,
+              backgroundImage: AssetImage('assets/images/papa_bismark.jpg'),
+            ),
+            const SizedBox(width: 4),
+            const Text("Total :  ", style: TextStyle(fontSize: 10)),
+            Text(
+              mog.length.toString(),
+              style: TextStyle(color: Colors.red[100], fontSize: 13),
+            ),
+          ],
+        ),
+        backgroundColor: Colors.green,
+      ),
+      body: ListView.separated(
+          itemBuilder: (context, index) {
+            return AllDisciplesWidget(
+                name: mog[index].name,
+                number: mog[index].contact,
+                picture: mog[index].picture,
+                gPSLocation: mog[index].homeAddress,
+                digitalAdd: mog[index].digitalAdd,
+                auxilliary: mog[index].auxilliary,
+                birthdate: mog[index].birthday,
+                shepherd: mog[index].shepherd);
+          },
+          separatorBuilder: (context, index) {
+            return const Divider();
+          },
+          itemCount: mog.length),
+    );
+  }
+}
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         centerTitle: true,
-//         title: Row(
-//           children: [
-//             const Text("Ps Francis Class-Peters",
-//                 style: TextStyle(fontSize: 16)),
-//             const SizedBox(width: 30),
-//             const CircleAvatar(
-//               radius: 15,
-//               backgroundImage: AssetImage('assets/images/papa_kofy.jpg'),
-//             ),
-//             const SizedBox(width: 4),
-//             const Text("Total :  ", style: TextStyle(fontSize: 10)),
-//             Text(
-//               mog.length.toString(),
-//               style: TextStyle(color: Colors.red[100], fontSize: 13),
-//             ),
-//           ],
-//         ),
-//         backgroundColor: Colors.green,
-//       ),
-//       body: ListView.separated(
-//           itemBuilder: (context, index) {
-//             return AllDisciplesWidget(
-//                 name: mog[index].name,
-//                 number: mog[index].contact,
-//                 picture: mog[index].picture,
-//                 gPSLocation: mog[index].homeAddress,
-//                 digitalAdd: mog[index].digitalAdd,
-//                 auxilliary: mog[index].auxilliary,
-//                 birthdate: mog[index].birthday,
-//                 shepherd: mog[index].shepherd);
-//           },
-//           separatorBuilder: (context, index) {
-//             return const Divider();
-//           },
-//           itemCount: mog.length),
-//     );
-//   }
-// }
+class PapaSena extends StatefulWidget {
+  const PapaSena({Key? key}) : super(key: key);
+
+  @override
+  _PapaSenaState createState() => _PapaSenaState();
+}
+
+class _PapaSenaState extends State<PapaSena> {
+  @override
+  final MemberController _memberController = MemberController();
+
+  final List<Members> mog = [];
+
+  void initState() {
+    _memberController.getAllMembers().then((member) {
+      for (Members element in member) {
+        if (element.shepherd == "Ps Sena Akumani") {
+          mog.add(element);
+        }
+
+        setState(() {});
+        //  print("these are members $member");
+      }
+    });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Row(
+          children: [
+            const Text("Ps Sena Akumani", style: TextStyle(fontSize: 16)),
+            const SizedBox(width: 30),
+            const CircleAvatar(
+              radius: 15,
+              backgroundImage: AssetImage('assets/images/papa_sena.jpg'),
+            ),
+            const SizedBox(width: 4),
+            const Text("Total :  ", style: TextStyle(fontSize: 10)),
+            Text(
+              mog.length.toString(),
+              style: TextStyle(color: Colors.red[100], fontSize: 13),
+            ),
+          ],
+        ),
+        backgroundColor: Colors.green,
+      ),
+      body: ListView.separated(
+          itemBuilder: (context, index) {
+            return AllDisciplesWidget(
+                name: mog[index].name,
+                number: mog[index].contact,
+                picture: mog[index].picture,
+                gPSLocation: mog[index].homeAddress,
+                digitalAdd: mog[index].digitalAdd,
+                auxilliary: mog[index].auxilliary,
+                birthdate: mog[index].birthday,
+                shepherd: mog[index].shepherd);
+          },
+          separatorBuilder: (context, index) {
+            return const Divider();
+          },
+          itemCount: mog.length),
+    );
+  }
+}
+
+class PapaNuwa extends StatefulWidget {
+  const PapaNuwa({Key? key}) : super(key: key);
+
+  @override
+  _PapaNuwaState createState() => _PapaNuwaState();
+}
+
+class _PapaNuwaState extends State<PapaNuwa> {
+  @override
+  final MemberController _memberController = MemberController();
+
+  final List<Members> mog = [];
+
+  void initState() {
+    _memberController.getAllMembers().then((member) {
+      for (Members element in member) {
+        if (element.shepherd == "Ps Nuworsa Akumani") {
+          mog.add(element);
+        }
+
+        setState(() {});
+        //  print("these are members $member");
+      }
+    });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Row(
+          children: [
+            const Text("Ps Nuworsa Akumani", style: TextStyle(fontSize: 16)),
+            const SizedBox(width: 30),
+            const CircleAvatar(
+              radius: 15,
+              backgroundImage: AssetImage('assets/images/default2.jpg'),
+            ),
+            const SizedBox(width: 4),
+            const Text("Total :  ", style: TextStyle(fontSize: 10)),
+            Text(
+              mog.length.toString(),
+              style: TextStyle(color: Colors.red[100], fontSize: 13),
+            ),
+          ],
+        ),
+        backgroundColor: Colors.green,
+      ),
+      body: ListView.separated(
+          itemBuilder: (context, index) {
+            return AllDisciplesWidget(
+                name: mog[index].name,
+                number: mog[index].contact,
+                picture: mog[index].picture,
+                gPSLocation: mog[index].homeAddress,
+                digitalAdd: mog[index].digitalAdd,
+                auxilliary: mog[index].auxilliary,
+                birthdate: mog[index].birthday,
+                shepherd: mog[index].shepherd);
+          },
+          separatorBuilder: (context, index) {
+            return const Divider();
+          },
+          itemCount: mog.length),
+    );
+  }
+}
+
+class PapaNicholas extends StatefulWidget {
+  const PapaNicholas({Key? key}) : super(key: key);
+
+  @override
+  _PapaNicholasState createState() => _PapaNicholasState();
+}
+
+class _PapaNicholasState extends State<PapaNicholas> {
+  @override
+  final MemberController _memberController = MemberController();
+
+  final List<Members> mog = [];
+ 
+
+  void initState() {
+    _memberController.getAllMembers().then((member) {
+      for (Members element in member) {
+        if (element.shepherd == "Ps Nicholas Effum") {
+          mog.add(element);
+        }
+
+        setState(() {});
+        //  print("these are members $member");
+      }
+    });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Row(
+          children: [
+            const Text("Ps Nicholas Effum", style: TextStyle(fontSize: 16)),
+            const SizedBox(width: 30),
+            const CircleAvatar(
+              radius: 15,
+              backgroundImage: AssetImage('assets/images/default2.jpg'),
+            ),
+            const SizedBox(width: 4),
+            const Text("Total :  ", style: TextStyle(fontSize: 10)),
+            Text(
+              mog.length.toString(),
+              style: TextStyle(color: Colors.red[100], fontSize: 13),
+            ),
+          ],
+        ),
+        backgroundColor: Colors.green,
+      ),
+      body: ListView.separated(
+          itemBuilder: (context, index) {
+            return AllDisciplesWidget(
+                name: mog[index].name,
+                number: mog[index].contact,
+                picture: mog[index].picture,
+                gPSLocation: mog[index].homeAddress,
+                digitalAdd: mog[index].digitalAdd,
+                auxilliary: mog[index].auxilliary,
+                birthdate: mog[index].birthday,
+                shepherd: mog[index].shepherd);
+          },
+          separatorBuilder: (context, index) {
+            return const Divider();
+          },
+          itemCount: mog.length),
+    );
+  }
+}

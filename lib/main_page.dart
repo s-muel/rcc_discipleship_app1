@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+// import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:my_todo_app1/add_member.dart';
-import 'package:my_todo_app1/add_member_page.dart';
-import 'package:my_todo_app1/create_todo_view.dart';
+import 'package:my_todo_app1/detailpage2.dart';
+// import 'package:my_todo_app1/add_member_page.dart';
+// import 'package:my_todo_app1/create_todo_view.dart';
 import 'package:my_todo_app1/details_page.dart';
+
 import 'package:my_todo_app1/papa.dart';
-import 'package:my_todo_app1/utilities.dart';
+// import 'package:my_todo_app1/utilities.dart';
 
 import 'all_members_page.dart';
 import 'controllers/member_controller.dart';
@@ -20,6 +22,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  final PapaNicholas _nicholas = const PapaNicholas();
   final MemberController _memberController = MemberController();
   final List<Members> papa_ernesto = [];
 
@@ -62,7 +65,7 @@ class _MainPageState extends State<MainPage> {
                   return const Papa();
                 }));
               },
-              child:  MOGProfileWidget(
+              child: MOGProfileWidget(
                 picture: "assets/images/papa.jpg",
                 name: "Pastor Ebo Jackson",
                 numberOfDisciples: "20",
@@ -70,111 +73,236 @@ class _MainPageState extends State<MainPage> {
             ),
             // 2 MOG
             InkWell(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const DetailsPage();
+                  }));
+                },
+                child: MOGProfileWidget(
+                    picture: "assets/images/papa_ernesto.jpg",
+                    name: "Pastor Ernest Adjei",
+                    numberOfDisciples: papa_ernesto.length)),
+            // 3 MOG
+            InkWell(
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return const DetailsPage();
+                  return const PapaAndy();
                 }));
               },
               child: MOGProfileWidget(
-                  picture: "assets/images/papa_ernesto.jpg",
-                  name: "Pastor Ernest Adjei",
-                  numberOfDisciples: papa_ernesto.length)
+                  picture: "assets/images/papa_andy.jpg",
+                  name: "Pastor Balthassar Anderson",
+                  numberOfDisciples: "10"),
             ),
-            // 3 MOG
-             MOGProfileWidget(
-                picture: "assets/images/papa_andy.jpg",
-                name: "Pastor Balthassar Anderson",
-                numberOfDisciples: "10"),
             // 4 MOG
-             MOGProfileWidget(
-                picture: "assets/images/papa_kelvin.jpg",
-                name: "Pastor Kelvin Osei Safah",
-                numberOfDisciples: "10"),
+            InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const PapaKelvin();
+                }));
+              },
+              child: MOGProfileWidget(
+                  picture: "assets/images/papa_kelvin.jpg",
+                  name: "Pastor Kelvin Osei Safah",
+                  numberOfDisciples: "10"),
+            ),
             // 5.1 MOG
-             MOGProfileWidget(
-                picture: "assets/images/mama_rita.jpg",
-                name: "Lady Pastor Rita Kandah",
-                numberOfDisciples: "8.."),
+            InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const MadRita();
+                }));
+              },
+              child: MOGProfileWidget(
+                  picture: "assets/images/mama_rita.jpg",
+                  name: "Lady Pastor Rita Kandah",
+                  numberOfDisciples: "8.."),
+            ),
             // 5 MOG
-             MOGProfileWidget(
-                picture: "assets/images/default2.jpg",
-                name: "Pastor James Amoah",
-                numberOfDisciples: "8.."),
+            InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const PapaAmoah();
+                }));
+              },
+              child: MOGProfileWidget(
+                  picture: "assets/images/default2.jpg",
+                  name: "Pastor James Amoah",
+                  numberOfDisciples: "8.."),
+            ),
             // 6 MOG
-             MOGProfileWidget(
-                picture: "assets/images/papa_wilber.jpg",
-                name: "Pastor Wilberforce Owusu Kyere",
-                numberOfDisciples: "10"),
+            InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const PapaWilber();
+                }));
+              },
+              child: MOGProfileWidget(
+                  picture: "assets/images/papa_wilber.jpg",
+                  name: "Pastor Wilberforce Owusu Kyere",
+                  numberOfDisciples: "10"),
+            ),
             // 7 MOG
-             MOGProfileWidget(
-                picture: "assets/images/papa_kofy.jpg",
-                name: "Pastor Francis Class-Peters",
-                numberOfDisciples: "8.."),
+            InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const PapaKofy();
+                }));
+              },
+              child: MOGProfileWidget(
+                  picture: "assets/images/papa_kofy.jpg",
+                  name: "Pastor Francis Class-Peters",
+                  numberOfDisciples: "8.."),
+            ),
             // 8 MOG
-             MOGProfileWidget(
-                picture: "assets/images/default2.jpg",
-                name: "Pastor  Wilfred Mensah",
-                numberOfDisciples: "8.."),
+            InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const PapaWilfred();
+                }));
+              },
+              child: MOGProfileWidget(
+                  picture: "assets/images/default2.jpg",
+                  name: "Pastor  Wilfred Mensah",
+                  numberOfDisciples: "8.."),
+            ),
             // 9 MOG
-             MOGProfileWidget(
-                picture: "assets/images/papa_baah.jpg",
-                name: "Pastor Isaac Baah",
-                numberOfDisciples: "15"),
+            InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const PapaIsaac();
+                }));
+              },
+              child: MOGProfileWidget(
+                  picture: "assets/images/papa_baah.jpg",
+                  name: "Pastor Isaac Baah",
+                  numberOfDisciples: "15"),
+            ),
             // 10 MOG
-             MOGProfileWidget(
-                picture: "assets/images/default2.jpg",
-                name: "Pastor  Benjamin Kojo Antwi",
-                numberOfDisciples: "15"),
+            InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const PapaBen();
+                }));
+              },
+              child: MOGProfileWidget(
+                  picture: "assets/images/default2.jpg",
+                  name: "Pastor  Benjamin Kojo Antwi",
+                  numberOfDisciples: "15"),
+            ),
             // 11 MOG
-             MOGProfileWidget(
-                picture: "assets/images/papa_sammy.jpg",
-                name: "Pastor Samuel Essuman",
-                numberOfDisciples: "8.."),
+            InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const PapaSammy();
+                }));
+              },
+              child: MOGProfileWidget(
+                  picture: "assets/images/papa_sammy.jpg",
+                  name: "Pastor Samuel Essuman",
+                  numberOfDisciples: "8.."),
+            ),
             // 12.1 MOG
-            MOGProfileWidget(
-                picture: "assets/images/papa_sterling.jpg",
-                name: "Pastor Prince Mensah",
-                numberOfDisciples: "8.."),
+            InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const PapaSterling();
+                }));
+              },
+              child: MOGProfileWidget(
+                  picture: "assets/images/papa_sterling.jpg",
+                  name: "Pastor Prince Mensah",
+                  numberOfDisciples: "8.."),
+            ),
             // 12 MOG
-             MOGProfileWidget(
-                picture: "assets/images/default1.jpg",
-                name: "Pastor Daniel Kojo Ampah",
-                numberOfDisciples: "8.."),
+            InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const PapaFocus();
+                }));
+              },
+              child: MOGProfileWidget(
+                  picture: "assets/images/default1.jpg",
+                  name: "Pastor Daniel Kojo Ampah",
+                  numberOfDisciples: "8.."),
+            ),
             // 13 MOG
-             MOGProfileWidget(
-                picture: "assets/images/papa_bismark.jpg",
-                name: "Pastor  Bismark Prah",
-                numberOfDisciples: "8.."),
+            InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const PapaBismark();
+                }));
+              },
+              child: MOGProfileWidget(
+                  picture: "assets/images/papa_bismark.jpg",
+                  name: "Pastor  Bismark Prah",
+                  numberOfDisciples: "8.."),
+            ),
             // 14 MOG
-             MOGProfileWidget(
-                picture: "assets/images/papa_steph.jpg",
-                name: "Pastor  Stephen Arthur",
-                numberOfDisciples: "8.."),
+            InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const PapaSteph();
+                }));
+              },
+              child: MOGProfileWidget(
+                  picture: "assets/images/papa_steph.jpg",
+                  name: "Pastor  Stephen Arthur",
+                  numberOfDisciples: "8.."),
+            ),
             // 15 MOG
-             MOGProfileWidget(
-                picture: "assets/images/default2.jpg",
-                name: "Pastor Nuworsa Akumani",
-                numberOfDisciples: "8.."),
+            InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const PapaNuwa();
+                }));
+              },
+              child: MOGProfileWidget(
+                  picture: "assets/images/default2.jpg",
+                  name: "Pastor Nuworsa Akumani",
+                  numberOfDisciples: "8.."),
+            ),
             // 16 MOG
-             MOGProfileWidget(
-                picture: "assets/images/papa_sena.jpg",
-                name: "Pastor Sena Akumani",
-                numberOfDisciples: "8.."),
+            InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const PapaSena();
+                }));
+              },
+              child: MOGProfileWidget(
+                  picture: "assets/images/papa_sena.jpg",
+                  name: "Pastor Sena Akumani",
+                  numberOfDisciples: "8.."),
+            ),
             // 17 MOG
-             MOGProfileWidget(
-                picture: "assets/images/papa_kandah.jpg",
-                name: "Pastor  Daniel Kandah",
-                numberOfDisciples: "8.."),
+            InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const PapaKandah();
+                }));
+              },
+              child: MOGProfileWidget(
+                  picture: "assets/images/papa_kandah.jpg",
+                  name: "Pastor  Daniel Kandah",
+                  numberOfDisciples: "8.."),
+            ),
             // 18 MOG
-             MOGProfileWidget(
+            MOGProfileWidget(
                 picture: "assets/images/default1.jpg",
                 name: "Pastor   James Addo",
                 numberOfDisciples: "8.."),
             // 19 MOG
-             MOGProfileWidget(
-                picture: "assets/images/default1.jpg",
-                name: "Pastor Nicholas Effum",
-                numberOfDisciples: "8.."),
+            InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const PapaNicholas();
+                }));
+              },
+              child: MOGProfileWidget(
+                  picture: "assets/images/default1.jpg",
+                  name: "Pastor Nicholas Effum",
+                  numberOfDisciples: "1.."),
+            ),
           ],
         ),
         // bottom navigation bar
@@ -279,15 +407,15 @@ class AdminAlert extends StatelessWidget {
 }
 
 class MOGProfileWidget extends StatelessWidget {
-   MOGProfileWidget({
+  MOGProfileWidget({
     Key? key,
     required this.picture,
     required this.name,
-     this.numberOfDisciples,
+    this.numberOfDisciples,
   }) : super(key: key);
   final String picture;
   final String name;
-   var numberOfDisciples;
+  var numberOfDisciples;
 
   @override
   Widget build(BuildContext context) {
