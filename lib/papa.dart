@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import 'all_members_page.dart';
+import 'controllers/member_controller.dart';
+import 'models/member_model.dart';
 
 class Papa extends StatefulWidget {
   const Papa({Key? key}) : super(key: key);
@@ -8,86 +13,102 @@ class Papa extends StatefulWidget {
 }
 
 class _PapaState extends State<Papa> {
-  final List<Map<String, dynamic>> database = [
-    {
-      'name': 'Ernest Adjei',
-      'picture': "assets/images/papa_ernesto.jpg",
-      'number': "+233 24 522 4866",
-      'GPS_Location': "Anaji Street",
-    },
-    {
-      'name': 'Kelvin Sefa',
-      'picture': "assets/images/papa_kelvin.jpg",
-      'number': "+233 54 745 2840",
-      'GPS_Location': "WS-23, Ota, Anaji Street",
-    },
-    {
-      'name': ' Balthassar Anderson',
-      'picture': "assets/images/papa_andy.jpg",
-      'number': "+233 24 476 4156",
-      'GPS_Location': "WS-23, Ota, Anaji Street",
-    },
-    {
-      'name': 'Rita Kandah',
-      'picture': "assets/images/mama_rita.jpg",
-      'number': "+233 24 476 4156",
-      'GPS_Location': "WS-23, Ota, Anaji Street",
-    },
-    {
-      'name': 'Nicholas Effum',
-      'picture': "assets/images/default1.jpg",
-      'number': "+233 24 476 4156",
-      'GPS_Location': "WS-23, Ota, Anaji Street",
-    },
-    
-  ];
+  final MemberController _memberController = MemberController();
+
+  final List<Members> mog = [];
+
+  void initState() {
+    _memberController.getAllMembers().then((member) {
+      for (Members element in member) {
+        if (element.shepherd == "Ps Ebo Jackson") {
+          mog.add(element);
+        }
+
+        setState(() {});
+        //  print("these are members $member");
+      }
+    });
+    super.initState();
+  }
+
+  late String name;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Row(
-          children: const [
-            Text("Pastor Ebo's Disciples"),
-            SizedBox(width: 50),
-            CircleAvatar(
+          children: [
+            const Text("Pastor Ebo's Disciples",
+                style: TextStyle(fontSize: 15)),
+            const SizedBox(width: 40),
+            const CircleAvatar(
               radius: 23,
               backgroundImage: AssetImage('assets/images/papa.jpg'),
+            ),
+            const SizedBox(width: 4),
+            const Text("Total :  ", style: TextStyle(fontSize: 10)),
+            Text(
+              mog.length.toString(),
+              style: TextStyle(color: Colors.red[100], fontSize: 13),
             ),
           ],
         ),
         backgroundColor: Colors.green,
       ),
-      body: ListView.separated(
-        itemBuilder: (context, index) {
-          return DisciplesWidget(
-              name: database[index]['name'],
-              number: database[index]['number'],
-              picture: database[index]['picture'],
-              GPSLocation: database[index]['GPS_Location']);
-        },
-        separatorBuilder: (context, index) {
-          return const SizedBox(
-            height: 10,
-          );
-        },
-        itemCount: database.length,
-      ),
+      body: FutureBuilder(
+          future: _memberController.getAllMembers(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.separated(
+                  itemBuilder: (context, index) {
+                    return PapaDisciplesWidget(
+                      name: mog[index].name,
+                      number: mog[index].contact,
+                      picture: mog[index].picture,
+                      gPSLocation: mog[index].homeAddress,
+                      digitalAdd: mog[index].digitalAdd,
+                      auxilliary: mog[index].auxilliary,
+                      birthdate: mog[index].birthday,
+                      shepherd: mog[index].shepherd,
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return const Divider(
+                      height: 20,
+                    );
+                  },
+                  itemCount: mog.length);
+            }
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            } else {
+              return const Center(child: Text("Check Internet Connection"));
+            }
+          }),
     );
   }
 }
 
-class DisciplesWidget extends StatelessWidget {
-  const DisciplesWidget({
+class PapaDisciplesWidget extends StatelessWidget {
+  const PapaDisciplesWidget({
     Key? key,
     required this.name,
     required this.number,
     required this.picture,
-    required this.GPSLocation,
+    required this.gPSLocation,
+    required this.digitalAdd,
+    required this.auxilliary,
+    required this.birthdate,
+    required this.shepherd,
   }) : super(key: key);
   final String name;
   final String number;
   final String picture;
-  final String GPSLocation;
+  final String gPSLocation;
+  final String digitalAdd;
+  final String auxilliary;
+  final String birthdate;
+  final String shepherd;
 
   @override
   Widget build(BuildContext context) {
@@ -96,20 +117,68 @@ class DisciplesWidget extends StatelessWidget {
       collapsedIconColor: Colors.green,
       leading: CircleAvatar(
         radius: 20,
-        backgroundImage: AssetImage(picture),
+        backgroundImage: NetworkImage(picture),
       ),
       title: Text(name),
+      subtitle: Row(
+        children: [
+          const Icon(
+            Icons.groups,
+            color: Colors.green,
+          ),
+          const SizedBox(
+            width: 5,
+          ),
+          const Text(
+            'shepherd : ',
+            style: TextStyle(fontSize: 13, color: Colors.green),
+          ),
+          Text(
+            shepherd,
+            style: const TextStyle(fontSize: 14),
+          ),
+        ],
+      ),
+      // subtitle: Text("hello am subtite"),
       children: [
         ListTile(
-          trailing: const Icon(Icons.phone, color: Colors.green),
+          trailing: TextButton(
+            onPressed: () {
+              launch("tel:$number");
+            },
+            child: const Icon(Icons.call),
+          ),
+          // trailing: const Icon(Icons.phone, color: Colors.green),
           title: const Text("Number"),
           subtitle: Text(number, style: const TextStyle(color: Colors.green)),
         ),
         ListTile(
-          title: const Text("GPS Location"),
-          subtitle: Text(GPSLocation),
+          title: const Text("Digital Address         /    Home Location"),
+          subtitle: Row(
+            children: [
+              Text(digitalAdd),
+              const SizedBox(
+                width: 10,
+              ),
+              Text(
+                gPSLocation,
+                maxLines: 1,
+                overflow: TextOverflow.clip,
+                softWrap: false,
+                style: const TextStyle(fontSize: 12),
+              )
+            ],
+          ),
           trailing: const Icon(
             Icons.location_on,
+            color: Colors.blue,
+          ),
+        ),
+        ListTile(
+          title: const Text("Birthdate"),
+          subtitle: Text(birthdate),
+          trailing: const Icon(
+            Icons.calendar_today_rounded,
             color: Colors.blue,
           ),
         ),
@@ -117,12 +186,3 @@ class DisciplesWidget extends StatelessWidget {
     );
   }
 }
-
-// class PapasDiscipleWidget extends StatelessWidget {
-//   const PapasDiscipleWidget({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container();
-//   }
-// }

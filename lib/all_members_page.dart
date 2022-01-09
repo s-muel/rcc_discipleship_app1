@@ -49,25 +49,56 @@ class _AllMembersPageState extends State<AllMembersPage> {
           Text(allMembers.length.toString())
         ],
       )),
-      body: ListView.separated(
-          itemBuilder: (context, index) {
-            return AllDisciplesWidget(
-              name: allMembers[index].name,
-              number: allMembers[index].contact,
-              picture: allMembers[index].picture,
-              gPSLocation: allMembers[index].homeAddress,
-              digitalAdd: allMembers[index].digitalAdd,
-              auxilliary: allMembers[index].auxilliary,
-              birthdate: allMembers[index].birthday,
-              shepherd: allMembers[index].shepherd,
-            );
-          },
-          separatorBuilder: (context, index) {
-            return const Divider(
-              height: 20,
-            );
-          },
-          itemCount: allMembers.length),
+      body: FutureBuilder(
+          future: _memberController.getAllMembers(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.separated(
+                  itemBuilder: (context, index) {
+                    return AllDisciplesWidget(
+                      name: allMembers[index].name,
+                      number: allMembers[index].contact,
+                      picture: allMembers[index].picture,
+                      gPSLocation: allMembers[index].homeAddress,
+                      digitalAdd: allMembers[index].digitalAdd,
+                      auxilliary: allMembers[index].auxilliary,
+                      birthdate: allMembers[index].birthday,
+                      shepherd: allMembers[index].shepherd,
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return const Divider(
+                      height: 20,
+                    );
+                  },
+                  itemCount: allMembers.length);
+            }
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            } else {
+              return const Center(child: Text("Check Internet Connection"));
+            }
+          }),
+
+      // body: ListView.separated(
+      //     itemBuilder: (context, index) {
+      //       return AllDisciplesWidget(
+      //         name: allMembers[index].name,
+      //         number: allMembers[index].contact,
+      //         picture: allMembers[index].picture,
+      //         gPSLocation: allMembers[index].homeAddress,
+      //         digitalAdd: allMembers[index].digitalAdd,
+      //         auxilliary: allMembers[index].auxilliary,
+      //         birthdate: allMembers[index].birthday,
+      //         shepherd: allMembers[index].shepherd,
+      //       );
+      //     },
+      //     separatorBuilder: (context, index) {
+      //       return const Divider(
+      //         height: 20,
+      //       );
+      //     },
+      //     itemCount: allMembers.length),
     );
   }
 }

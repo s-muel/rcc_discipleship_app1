@@ -23,12 +23,18 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   final PapaNicholas _nicholas = const PapaNicholas();
+
   final MemberController _memberController = MemberController();
   final List<Members> papa_ernesto = [];
+  final List<Members> papa = [];
 
+  @override
   void initState() {
     _memberController.getAllMembers().then((member) {
       for (Members element in member) {
+       if (element.shepherd == "Ps Ebo Jackson") {
+          papa.add(element);
+        }
         if (element.shepherd == "Ps Ernest Adjei") {
           papa_ernesto.add(element);
         }
@@ -66,10 +72,9 @@ class _MainPageState extends State<MainPage> {
                 }));
               },
               child: MOGProfileWidget(
-                picture: "assets/images/papa.jpg",
-                name: "Pastor Ebo Jackson",
-                numberOfDisciples: "20",
-              ),
+                  picture: "assets/images/papa.jpg",
+                  name: "Pastor Ebo Jackson",
+                  numberOfDisciples: papa.length),
             ),
             // 2 MOG
             InkWell(
