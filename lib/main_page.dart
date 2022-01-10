@@ -227,7 +227,7 @@ class _MainPageState extends State<MainPage> {
                 }));
               },
               child: MOGProfileWidget(
-                  picture: "assets/images/default1.jpg",
+                  picture: "assets/images/papa_focus.jpg",
                   name: "Pastor Daniel Kojo Ampaw",
                   numberOfDisciples: "8.."),
             ),
