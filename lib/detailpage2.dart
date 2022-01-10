@@ -526,7 +526,7 @@ class _PapaBismarkState extends State<PapaBismark> {
         centerTitle: true,
         title: Row(
           children: [
-            const Text("Ps Daniel Kojo Ampah", style: TextStyle(fontSize: 16)),
+            const Text("Pastor  Bismark Prah", style: TextStyle(fontSize: 16)),
             const SizedBox(width: 30),
             const CircleAvatar(
               radius: 15,
@@ -714,7 +714,6 @@ class _PapaNicholasState extends State<PapaNicholas> {
   final MemberController _memberController = MemberController();
 
   final List<Members> mog = [];
- 
 
   void initState() {
     _memberController.getAllMembers().then((member) {

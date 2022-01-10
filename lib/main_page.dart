@@ -32,7 +32,7 @@ class _MainPageState extends State<MainPage> {
   void initState() {
     _memberController.getAllMembers().then((member) {
       for (Members element in member) {
-       if (element.shepherd == "Ps Ebo Jackson") {
+        if (element.shepherd == "Ps Ebo Jackson") {
           papa.add(element);
         }
         if (element.shepherd == "Ps Ernest Adjei") {
@@ -167,7 +167,7 @@ class _MainPageState extends State<MainPage> {
                 }));
               },
               child: MOGProfileWidget(
-                  picture: "assets/images/default2.jpg",
+                  picture: "assets/images/papa_wilfred.jpeg",
                   name: "Pastor  Wilfred Mensah",
                   numberOfDisciples: "8.."),
             ),
@@ -228,7 +228,7 @@ class _MainPageState extends State<MainPage> {
               },
               child: MOGProfileWidget(
                   picture: "assets/images/default1.jpg",
-                  name: "Pastor Daniel Kojo Ampah",
+                  name: "Pastor Daniel Kojo Ampaw",
                   numberOfDisciples: "8.."),
             ),
             // 13 MOG

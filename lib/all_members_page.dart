@@ -179,6 +179,7 @@ class AllDisciplesWidget extends StatelessWidget {
                 maxLines: 1,
                 overflow: TextOverflow.clip,
                 softWrap: false,
+                style: const TextStyle(fontSize: 12),
               )
             ],
           ),
