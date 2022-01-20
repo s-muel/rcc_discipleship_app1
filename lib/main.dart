@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_todo_app1/main_page.dart';
+import 'package:my_todo_app1/splash.dart';
 
 import 'home_view.dart';
 
@@ -10,7 +11,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,7 +19,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
       ),
       //This HomeView() is a class in home_view.dart
-      home: const MainPage(),
+      home: const SplashScreen(),
     );
   }
 }
+

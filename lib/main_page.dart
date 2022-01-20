@@ -61,6 +61,7 @@ class _MainPageState extends State<MainPage> {
             style: TextStyle(color: Colors.black),
           ),
           centerTitle: true,
+          
         ),
         body: ListView(
           children: [
@@ -69,12 +70,14 @@ class _MainPageState extends State<MainPage> {
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return const Papa();
-                }));
+                }
+                )
+                );
               },
               child: MOGProfileWidget(
                   picture: "assets/images/papa.jpg",
                   name: "Pastor Ebo Jackson",
-                  numberOfDisciples: papa.length),
+                  numberOfDisciples: ""),
             ),
             // 2 MOG
             InkWell(
@@ -86,7 +89,7 @@ class _MainPageState extends State<MainPage> {
                 child: MOGProfileWidget(
                     picture: "assets/images/papa_ernesto.jpg",
                     name: "Pastor Ernest Adjei",
-                    numberOfDisciples: papa_ernesto.length)),
+                    numberOfDisciples: "")),
             // 3 MOG
             InkWell(
               onTap: () {
@@ -97,7 +100,7 @@ class _MainPageState extends State<MainPage> {
               child: MOGProfileWidget(
                   picture: "assets/images/papa_andy.jpg",
                   name: "Pastor Balthassar Anderson",
-                  numberOfDisciples: "10"),
+                  numberOfDisciples: ""),
             ),
             // 4 MOG
             InkWell(
@@ -109,9 +112,20 @@ class _MainPageState extends State<MainPage> {
               child: MOGProfileWidget(
                   picture: "assets/images/papa_kelvin.jpg",
                   name: "Pastor Kelvin Osei Safah",
-                  numberOfDisciples: "10"),
+                  numberOfDisciples: ""),
             ),
             // 5.1 MOG
+            InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const MadPat();
+                }));
+              },
+              child: MOGProfileWidget(
+                  picture: "assets/images/pat.jpg",
+                  name: "Lady Patricia Essel",
+                  numberOfDisciples: ""),
+            ),
             InkWell(
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -121,7 +135,7 @@ class _MainPageState extends State<MainPage> {
               child: MOGProfileWidget(
                   picture: "assets/images/mama_rita.jpg",
                   name: "Lady Pastor Rita Kandah",
-                  numberOfDisciples: "8.."),
+                  numberOfDisciples: ""),
             ),
             // 5 MOG
             InkWell(
@@ -133,7 +147,7 @@ class _MainPageState extends State<MainPage> {
               child: MOGProfileWidget(
                   picture: "assets/images/default2.jpg",
                   name: "Pastor James Amoah",
-                  numberOfDisciples: "8.."),
+                  numberOfDisciples: ""),
             ),
             // 6 MOG
             InkWell(
@@ -145,7 +159,7 @@ class _MainPageState extends State<MainPage> {
               child: MOGProfileWidget(
                   picture: "assets/images/papa_wilber.jpg",
                   name: "Pastor Wilberforce Owusu Kyere",
-                  numberOfDisciples: "10"),
+                  numberOfDisciples: ""),
             ),
             // 7 MOG
             InkWell(
@@ -157,7 +171,7 @@ class _MainPageState extends State<MainPage> {
               child: MOGProfileWidget(
                   picture: "assets/images/papa_kofy.jpg",
                   name: "Pastor Francis Class-Peters",
-                  numberOfDisciples: "8.."),
+                  numberOfDisciples: ""),
             ),
             // 8 MOG
             InkWell(
@@ -169,7 +183,7 @@ class _MainPageState extends State<MainPage> {
               child: MOGProfileWidget(
                   picture: "assets/images/papa_wilfred.jpeg",
                   name: "Pastor  Wilfred Mensah",
-                  numberOfDisciples: "8.."),
+                  numberOfDisciples: ""),
             ),
             // 9 MOG
             InkWell(
@@ -181,7 +195,7 @@ class _MainPageState extends State<MainPage> {
               child: MOGProfileWidget(
                   picture: "assets/images/papa_baah.jpg",
                   name: "Pastor Isaac Baah",
-                  numberOfDisciples: "15"),
+                  numberOfDisciples: ""),
             ),
             // 10 MOG
             InkWell(
@@ -193,7 +207,7 @@ class _MainPageState extends State<MainPage> {
               child: MOGProfileWidget(
                   picture: "assets/images/default2.jpg",
                   name: "Pastor  Benjamin Kojo Antwi",
-                  numberOfDisciples: "15"),
+                  numberOfDisciples: ""),
             ),
             // 11 MOG
             InkWell(
@@ -205,7 +219,7 @@ class _MainPageState extends State<MainPage> {
               child: MOGProfileWidget(
                   picture: "assets/images/papa_sammy.jpg",
                   name: "Pastor Samuel Essuman",
-                  numberOfDisciples: "8.."),
+                  numberOfDisciples: ""),
             ),
             // 12.1 MOG
             InkWell(
@@ -217,7 +231,7 @@ class _MainPageState extends State<MainPage> {
               child: MOGProfileWidget(
                   picture: "assets/images/papa_sterling.jpg",
                   name: "Pastor Prince Mensah",
-                  numberOfDisciples: "8.."),
+                  numberOfDisciples: ""),
             ),
             // 12 MOG
             InkWell(
@@ -229,7 +243,7 @@ class _MainPageState extends State<MainPage> {
               child: MOGProfileWidget(
                   picture: "assets/images/papa_focus.jpg",
                   name: "Pastor Daniel Kojo Ampaw",
-                  numberOfDisciples: "8.."),
+                  numberOfDisciples: ""),
             ),
             // 13 MOG
             InkWell(
@@ -241,7 +255,7 @@ class _MainPageState extends State<MainPage> {
               child: MOGProfileWidget(
                   picture: "assets/images/papa_bismark.jpg",
                   name: "Pastor  Bismark Prah",
-                  numberOfDisciples: "8.."),
+                  numberOfDisciples: ""),
             ),
             // 14 MOG
             InkWell(
@@ -253,7 +267,7 @@ class _MainPageState extends State<MainPage> {
               child: MOGProfileWidget(
                   picture: "assets/images/papa_steph.jpg",
                   name: "Pastor  Stephen Arthur",
-                  numberOfDisciples: "8.."),
+                  numberOfDisciples: ""),
             ),
             // 15 MOG
             InkWell(
@@ -265,7 +279,7 @@ class _MainPageState extends State<MainPage> {
               child: MOGProfileWidget(
                   picture: "assets/images/default2.jpg",
                   name: "Pastor Nuworsa Akumani",
-                  numberOfDisciples: "8.."),
+                  numberOfDisciples: ""),
             ),
             // 16 MOG
             InkWell(
@@ -277,7 +291,7 @@ class _MainPageState extends State<MainPage> {
               child: MOGProfileWidget(
                   picture: "assets/images/papa_sena.jpg",
                   name: "Pastor Sena Akumani",
-                  numberOfDisciples: "8.."),
+                  numberOfDisciples: ""),
             ),
             // 17 MOG
             InkWell(
@@ -289,13 +303,13 @@ class _MainPageState extends State<MainPage> {
               child: MOGProfileWidget(
                   picture: "assets/images/papa_kandah.jpg",
                   name: "Pastor  Daniel Kandah",
-                  numberOfDisciples: "8.."),
+                  numberOfDisciples: ""),
             ),
             // 18 MOG
             MOGProfileWidget(
                 picture: "assets/images/default1.jpg",
                 name: "Pastor   James Addo",
-                numberOfDisciples: "8.."),
+                numberOfDisciples: ""),
             // 19 MOG
             InkWell(
               onTap: () {
@@ -306,7 +320,7 @@ class _MainPageState extends State<MainPage> {
               child: MOGProfileWidget(
                   picture: "assets/images/default1.jpg",
                   name: "Pastor Nicholas Effum",
-                  numberOfDisciples: "1.."),
+                  numberOfDisciples: ""),
             ),
           ],
         ),

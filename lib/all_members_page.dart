@@ -43,7 +43,7 @@ class _AllMembersPageState extends State<AllMembersPage> {
           title: Row(
         children: [
           const Text("Total Members"),
-          SizedBox(
+          const SizedBox(
             width: 20,
           ),
           Text(allMembers.length.toString())
@@ -175,11 +175,12 @@ class AllDisciplesWidget extends StatelessWidget {
                 width: 10,
               ),
               Text(
-                gPSLocation,
+                " /  $gPSLocation",
                 maxLines: 1,
                 overflow: TextOverflow.clip,
                 softWrap: false,
-                style: const TextStyle(fontSize: 12),
+                style:
+                    const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
               )
             ],
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sms/flutter_sms.dart';
 import 'package:my_todo_app1/all_members_page.dart';
 
 import 'controllers/member_controller.dart';
@@ -15,6 +16,7 @@ class _PapaWilfredState extends State<PapaWilfred> {
   final MemberController _memberController = MemberController();
 
   final List<Members> papa_andy = [];
+  List<String> number = [];
 
   void initState() {
     _memberController.getAllMembers().then((member) {
@@ -23,7 +25,9 @@ class _PapaWilfredState extends State<PapaWilfred> {
           papa_andy.add(element);
         }
 
-        setState(() {});
+        setState(() {
+          number = papa_andy.map((member) => member.contact).toList();
+        });
         //  print("these are members $member");
       }
     });
@@ -53,22 +57,50 @@ class _PapaWilfredState extends State<PapaWilfred> {
         ),
         backgroundColor: Colors.green,
       ),
-      body: ListView.separated(
-          itemBuilder: (context, index) {
-            return AllDisciplesWidget(
-                name: papa_andy[index].name,
-                number: papa_andy[index].contact,
-                picture: papa_andy[index].picture,
-                gPSLocation: papa_andy[index].homeAddress,
-                digitalAdd: papa_andy[index].digitalAdd,
-                auxilliary: papa_andy[index].auxilliary,
-                birthdate: papa_andy[index].birthday,
-                shepherd: papa_andy[index].shepherd);
-          },
-          separatorBuilder: (context, index) {
-            return const Divider();
-          },
-          itemCount: papa_andy.length),
+      body: FutureBuilder(
+          future: _memberController.getAllMembers(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.separated(
+                  itemBuilder: (context, index) {
+                    return AllDisciplesWidget(
+                        name: papa_andy[index].name,
+                        number: papa_andy[index].contact,
+                        picture: papa_andy[index].picture,
+                        gPSLocation: papa_andy[index].homeAddress,
+                        digitalAdd: papa_andy[index].digitalAdd,
+                        auxilliary: papa_andy[index].auxilliary,
+                        birthdate: papa_andy[index].birthday,
+                        shepherd: papa_andy[index].shepherd);
+                  },
+                  separatorBuilder: (context, index) {
+                    return const Divider();
+                  },
+                  itemCount: papa_andy.length);
+            }
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            } else {
+              return const Center(child: Text("Check Internet Connection"));
+            }
+          }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          String message = "This is a test message!";
+          List<String> recipents = number;
+
+          _sendSMS(message, recipents);
+        },
+        child: const Icon(Icons.mail),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.green,
+        shape: const CircularNotchedRectangle(),
+        child: Container(
+          height: 50,
+        ),
+      ),
     );
   }
 }
@@ -85,6 +117,7 @@ class _PapaIsaacState extends State<PapaIsaac> {
   final MemberController _memberController = MemberController();
 
   final List<Members> mog = [];
+  List<String> number = [];
 
   void initState() {
     _memberController.getAllMembers().then((member) {
@@ -93,7 +126,9 @@ class _PapaIsaacState extends State<PapaIsaac> {
           mog.add(element);
         }
 
-        setState(() {});
+        setState(() {
+          number = mog.map((member) => member.contact).toList();
+        });
         //  print("these are members $member");
       }
     });
@@ -123,22 +158,50 @@ class _PapaIsaacState extends State<PapaIsaac> {
         ),
         backgroundColor: Colors.green,
       ),
-      body: ListView.separated(
-          itemBuilder: (context, index) {
-            return AllDisciplesWidget(
-                name: mog[index].name,
-                number: mog[index].contact,
-                picture: mog[index].picture,
-                gPSLocation: mog[index].homeAddress,
-                digitalAdd: mog[index].digitalAdd,
-                auxilliary: mog[index].auxilliary,
-                birthdate: mog[index].birthday,
-                shepherd: mog[index].shepherd);
-          },
-          separatorBuilder: (context, index) {
-            return const Divider();
-          },
-          itemCount: mog.length),
+      body: FutureBuilder(
+          future: _memberController.getAllMembers(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.separated(
+                  itemBuilder: (context, index) {
+                    return AllDisciplesWidget(
+                        name: mog[index].name,
+                        number: mog[index].contact,
+                        picture: mog[index].picture,
+                        gPSLocation: mog[index].homeAddress,
+                        digitalAdd: mog[index].digitalAdd,
+                        auxilliary: mog[index].auxilliary,
+                        birthdate: mog[index].birthday,
+                        shepherd: mog[index].shepherd);
+                  },
+                  separatorBuilder: (context, index) {
+                    return const Divider();
+                  },
+                  itemCount: mog.length);
+            }
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            } else {
+              return const Center(child: Text("Check Internet Connection"));
+            }
+          }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          String message = "This is a test message!";
+          List<String> recipents = number;
+
+          _sendSMS(message, recipents);
+        },
+        child: const Icon(Icons.mail),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.green,
+        shape: const CircularNotchedRectangle(),
+        child: Container(
+          height: 50,
+        ),
+      ),
     );
   }
 }
@@ -155,6 +218,7 @@ class _PapaBenState extends State<PapaBen> {
   final MemberController _memberController = MemberController();
 
   final List<Members> mog = [];
+  List<String> number = [];
 
   void initState() {
     _memberController.getAllMembers().then((member) {
@@ -163,7 +227,9 @@ class _PapaBenState extends State<PapaBen> {
           mog.add(element);
         }
 
-        setState(() {});
+        setState(() {
+          number = mog.map((member) => member.contact).toList();
+        });
         //  print("these are members $member");
       }
     });
@@ -177,8 +243,9 @@ class _PapaBenState extends State<PapaBen> {
         centerTitle: true,
         title: Row(
           children: [
-            const Text("Ps Benjamin Kojo Antwi"),
-            const SizedBox(width: 50),
+            const Text("Ps Benjamin Kojo Antwi",
+                style: TextStyle(fontSize: 18)),
+            const SizedBox(width: 10),
             const CircleAvatar(
               radius: 15,
               backgroundImage: AssetImage('assets/images/default2.jpg'),
@@ -193,22 +260,50 @@ class _PapaBenState extends State<PapaBen> {
         ),
         backgroundColor: Colors.green,
       ),
-      body: ListView.separated(
-          itemBuilder: (context, index) {
-            return AllDisciplesWidget(
-                name: mog[index].name,
-                number: mog[index].contact,
-                picture: mog[index].picture,
-                gPSLocation: mog[index].homeAddress,
-                digitalAdd: mog[index].digitalAdd,
-                auxilliary: mog[index].auxilliary,
-                birthdate: mog[index].birthday,
-                shepherd: mog[index].shepherd);
-          },
-          separatorBuilder: (context, index) {
-            return const Divider();
-          },
-          itemCount: mog.length),
+      body: FutureBuilder(
+          future: _memberController.getAllMembers(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.separated(
+                  itemBuilder: (context, index) {
+                    return AllDisciplesWidget(
+                        name: mog[index].name,
+                        number: mog[index].contact,
+                        picture: mog[index].picture,
+                        gPSLocation: mog[index].homeAddress,
+                        digitalAdd: mog[index].digitalAdd,
+                        auxilliary: mog[index].auxilliary,
+                        birthdate: mog[index].birthday,
+                        shepherd: mog[index].shepherd);
+                  },
+                  separatorBuilder: (context, index) {
+                    return const Divider();
+                  },
+                  itemCount: mog.length);
+            }
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            } else {
+              return const Center(child: Text("Check Internet Connection"));
+            }
+          }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          String message = "This is a test message!";
+          List<String> recipents = number;
+
+          _sendSMS(message, recipents);
+        },
+        child: const Icon(Icons.mail),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.green,
+        shape: const CircularNotchedRectangle(),
+        child: Container(
+          height: 50,
+        ),
+      ),
     );
   }
 }
@@ -224,6 +319,7 @@ class _PapaSammyState extends State<PapaSammy> {
   final MemberController _memberController = MemberController();
 
   final List<Members> mog = [];
+  List<String> number = [];
 
   @override
   void initState() {
@@ -233,8 +329,9 @@ class _PapaSammyState extends State<PapaSammy> {
           mog.add(element);
         }
 
-        setState(() {});
-        //  print("these are members $member");
+        setState(() {
+          number = mog.map((member) => member.contact).toList();
+        });
       }
     });
     super.initState();
@@ -263,22 +360,50 @@ class _PapaSammyState extends State<PapaSammy> {
         ),
         backgroundColor: Colors.green,
       ),
-      body: ListView.separated(
-          itemBuilder: (context, index) {
-            return AllDisciplesWidget(
-                name: mog[index].name,
-                number: mog[index].contact,
-                picture: mog[index].picture,
-                gPSLocation: mog[index].homeAddress,
-                digitalAdd: mog[index].digitalAdd,
-                auxilliary: mog[index].auxilliary,
-                birthdate: mog[index].birthday,
-                shepherd: mog[index].shepherd);
-          },
-          separatorBuilder: (context, index) {
-            return const Divider();
-          },
-          itemCount: mog.length),
+      body: FutureBuilder(
+          future: _memberController.getAllMembers(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.separated(
+                  itemBuilder: (context, index) {
+                    return AllDisciplesWidget(
+                        name: mog[index].name,
+                        number: mog[index].contact,
+                        picture: mog[index].picture,
+                        gPSLocation: mog[index].homeAddress,
+                        digitalAdd: mog[index].digitalAdd,
+                        auxilliary: mog[index].auxilliary,
+                        birthdate: mog[index].birthday,
+                        shepherd: mog[index].shepherd);
+                  },
+                  separatorBuilder: (context, index) {
+                    return const Divider();
+                  },
+                  itemCount: mog.length);
+            }
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            } else {
+              return const Center(child: Text("Check Internet Connection"));
+            }
+          }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          String message = "This is a test message!";
+          List<String> recipents = number;
+
+          _sendSMS(message, recipents);
+        },
+        child: const Icon(Icons.mail),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.green,
+        shape: const CircularNotchedRectangle(),
+        child: Container(
+          height: 50,
+        ),
+      ),
     );
   }
 }
@@ -295,6 +420,7 @@ class _PapaSterlingState extends State<PapaSterling> {
   final MemberController _memberController = MemberController();
 
   final List<Members> mog = [];
+  List<String> number = [];
 
   void initState() {
     _memberController.getAllMembers().then((member) {
@@ -303,7 +429,9 @@ class _PapaSterlingState extends State<PapaSterling> {
           mog.add(element);
         }
 
-        setState(() {});
+        setState(() {
+          number = mog.map((member) => member.contact).toList();
+        });
         //  print("these are members $member");
       }
     });
@@ -332,22 +460,50 @@ class _PapaSterlingState extends State<PapaSterling> {
         ),
         backgroundColor: Colors.green,
       ),
-      body: ListView.separated(
-          itemBuilder: (context, index) {
-            return AllDisciplesWidget(
-                name: mog[index].name,
-                number: mog[index].contact,
-                picture: mog[index].picture,
-                gPSLocation: mog[index].homeAddress,
-                digitalAdd: mog[index].digitalAdd,
-                auxilliary: mog[index].auxilliary,
-                birthdate: mog[index].birthday,
-                shepherd: mog[index].shepherd);
-          },
-          separatorBuilder: (context, index) {
-            return const Divider();
-          },
-          itemCount: mog.length),
+      body: FutureBuilder(
+          future: _memberController.getAllMembers(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.separated(
+                  itemBuilder: (context, index) {
+                    return AllDisciplesWidget(
+                        name: mog[index].name,
+                        number: mog[index].contact,
+                        picture: mog[index].picture,
+                        gPSLocation: mog[index].homeAddress,
+                        digitalAdd: mog[index].digitalAdd,
+                        auxilliary: mog[index].auxilliary,
+                        birthdate: mog[index].birthday,
+                        shepherd: mog[index].shepherd);
+                  },
+                  separatorBuilder: (context, index) {
+                    return const Divider();
+                  },
+                  itemCount: mog.length);
+            }
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            } else {
+              return const Center(child: Text("Check Internet Connection"));
+            }
+          }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          String message = "This is a test message!";
+          List<String> recipents = number;
+
+          _sendSMS(message, recipents);
+        },
+        child: const Icon(Icons.mail),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.green,
+        shape: const CircularNotchedRectangle(),
+        child: Container(
+          height: 50,
+        ),
+      ),
     );
   }
 }
@@ -364,6 +520,7 @@ class _PapaFocusState extends State<PapaFocus> {
   final MemberController _memberController = MemberController();
 
   final List<Members> mog = [];
+  List<String> number = [];
 
   void initState() {
     _memberController.getAllMembers().then((member) {
@@ -372,7 +529,9 @@ class _PapaFocusState extends State<PapaFocus> {
           mog.add(element);
         }
 
-        setState(() {});
+        setState(() {
+          number = mog.map((member) => member.contact).toList();
+        });
         //  print("these are members $member");
       }
     });
@@ -402,22 +561,50 @@ class _PapaFocusState extends State<PapaFocus> {
         ),
         backgroundColor: Colors.green,
       ),
-      body: ListView.separated(
-          itemBuilder: (context, index) {
-            return AllDisciplesWidget(
-                name: mog[index].name,
-                number: mog[index].contact,
-                picture: mog[index].picture,
-                gPSLocation: mog[index].homeAddress,
-                digitalAdd: mog[index].digitalAdd,
-                auxilliary: mog[index].auxilliary,
-                birthdate: mog[index].birthday,
-                shepherd: mog[index].shepherd);
-          },
-          separatorBuilder: (context, index) {
-            return const Divider();
-          },
-          itemCount: mog.length),
+      body: FutureBuilder(
+          future: _memberController.getAllMembers(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.separated(
+                  itemBuilder: (context, index) {
+                    return AllDisciplesWidget(
+                        name: mog[index].name,
+                        number: mog[index].contact,
+                        picture: mog[index].picture,
+                        gPSLocation: mog[index].homeAddress,
+                        digitalAdd: mog[index].digitalAdd,
+                        auxilliary: mog[index].auxilliary,
+                        birthdate: mog[index].birthday,
+                        shepherd: mog[index].shepherd);
+                  },
+                  separatorBuilder: (context, index) {
+                    return const Divider();
+                  },
+                  itemCount: mog.length);
+            }
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            } else {
+              return const Center(child: Text("Check Internet Connection"));
+            }
+          }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          String message = "This is a test message!";
+          List<String> recipents = number;
+
+          _sendSMS(message, recipents);
+        },
+        child: const Icon(Icons.mail),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.green,
+        shape: const CircularNotchedRectangle(),
+        child: Container(
+          height: 50,
+        ),
+      ),
     );
   }
 }
@@ -434,6 +621,7 @@ class _PapaStephState extends State<PapaSteph> {
   final MemberController _memberController = MemberController();
 
   final List<Members> mog = [];
+  List<String> number = [];
 
   void initState() {
     _memberController.getAllMembers().then((member) {
@@ -442,7 +630,9 @@ class _PapaStephState extends State<PapaSteph> {
           mog.add(element);
         }
 
-        setState(() {});
+        setState(() {
+          number = mog.map((member) => member.contact).toList();
+        });
         //  print("these are members $member");
       }
     });
@@ -472,22 +662,50 @@ class _PapaStephState extends State<PapaSteph> {
         ),
         backgroundColor: Colors.green,
       ),
-      body: ListView.separated(
-          itemBuilder: (context, index) {
-            return AllDisciplesWidget(
-                name: mog[index].name,
-                number: mog[index].contact,
-                picture: mog[index].picture,
-                gPSLocation: mog[index].homeAddress,
-                digitalAdd: mog[index].digitalAdd,
-                auxilliary: mog[index].auxilliary,
-                birthdate: mog[index].birthday,
-                shepherd: mog[index].shepherd);
-          },
-          separatorBuilder: (context, index) {
-            return const Divider();
-          },
-          itemCount: mog.length),
+      body: FutureBuilder(
+          future: _memberController.getAllMembers(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.separated(
+                  itemBuilder: (context, index) {
+                    return AllDisciplesWidget(
+                        name: mog[index].name,
+                        number: mog[index].contact,
+                        picture: mog[index].picture,
+                        gPSLocation: mog[index].homeAddress,
+                        digitalAdd: mog[index].digitalAdd,
+                        auxilliary: mog[index].auxilliary,
+                        birthdate: mog[index].birthday,
+                        shepherd: mog[index].shepherd);
+                  },
+                  separatorBuilder: (context, index) {
+                    return const Divider();
+                  },
+                  itemCount: mog.length);
+            }
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            } else {
+              return const Center(child: Text("Check Internet Connection"));
+            }
+          }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          String message = "This is a test message!";
+          List<String> recipents = number;
+
+          _sendSMS(message, recipents);
+        },
+        child: const Icon(Icons.mail),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.green,
+        shape: const CircularNotchedRectangle(),
+        child: Container(
+          height: 50,
+        ),
+      ),
     );
   }
 }
@@ -504,6 +722,7 @@ class _PapaBismarkState extends State<PapaBismark> {
   final MemberController _memberController = MemberController();
 
   final List<Members> mog = [];
+  List<String> number = [];
 
   void initState() {
     _memberController.getAllMembers().then((member) {
@@ -512,7 +731,9 @@ class _PapaBismarkState extends State<PapaBismark> {
           mog.add(element);
         }
 
-        setState(() {});
+        setState(() {
+          number = mog.map((member) => member.contact).toList();
+        });
         //  print("these are members $member");
       }
     });
@@ -542,22 +763,50 @@ class _PapaBismarkState extends State<PapaBismark> {
         ),
         backgroundColor: Colors.green,
       ),
-      body: ListView.separated(
-          itemBuilder: (context, index) {
-            return AllDisciplesWidget(
-                name: mog[index].name,
-                number: mog[index].contact,
-                picture: mog[index].picture,
-                gPSLocation: mog[index].homeAddress,
-                digitalAdd: mog[index].digitalAdd,
-                auxilliary: mog[index].auxilliary,
-                birthdate: mog[index].birthday,
-                shepherd: mog[index].shepherd);
-          },
-          separatorBuilder: (context, index) {
-            return const Divider();
-          },
-          itemCount: mog.length),
+      body: FutureBuilder(
+          future: _memberController.getAllMembers(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.separated(
+                  itemBuilder: (context, index) {
+                    return AllDisciplesWidget(
+                        name: mog[index].name,
+                        number: mog[index].contact,
+                        picture: mog[index].picture,
+                        gPSLocation: mog[index].homeAddress,
+                        digitalAdd: mog[index].digitalAdd,
+                        auxilliary: mog[index].auxilliary,
+                        birthdate: mog[index].birthday,
+                        shepherd: mog[index].shepherd);
+                  },
+                  separatorBuilder: (context, index) {
+                    return const Divider();
+                  },
+                  itemCount: mog.length);
+            }
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            } else {
+              return const Center(child: Text("Check Internet Connection"));
+            }
+          }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          String message = "This is a test message!";
+          List<String> recipents = number;
+
+          _sendSMS(message, recipents);
+        },
+        child: const Icon(Icons.mail),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.green,
+        shape: const CircularNotchedRectangle(),
+        child: Container(
+          height: 50,
+        ),
+      ),
     );
   }
 }
@@ -574,6 +823,7 @@ class _PapaSenaState extends State<PapaSena> {
   final MemberController _memberController = MemberController();
 
   final List<Members> mog = [];
+  List<String> number = [];
 
   void initState() {
     _memberController.getAllMembers().then((member) {
@@ -582,7 +832,9 @@ class _PapaSenaState extends State<PapaSena> {
           mog.add(element);
         }
 
-        setState(() {});
+        setState(() {
+          number = mog.map((member) => member.contact).toList();
+        });
         //  print("these are members $member");
       }
     });
@@ -612,22 +864,50 @@ class _PapaSenaState extends State<PapaSena> {
         ),
         backgroundColor: Colors.green,
       ),
-      body: ListView.separated(
-          itemBuilder: (context, index) {
-            return AllDisciplesWidget(
-                name: mog[index].name,
-                number: mog[index].contact,
-                picture: mog[index].picture,
-                gPSLocation: mog[index].homeAddress,
-                digitalAdd: mog[index].digitalAdd,
-                auxilliary: mog[index].auxilliary,
-                birthdate: mog[index].birthday,
-                shepherd: mog[index].shepherd);
-          },
-          separatorBuilder: (context, index) {
-            return const Divider();
-          },
-          itemCount: mog.length),
+      body: FutureBuilder(
+          future: _memberController.getAllMembers(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.separated(
+                  itemBuilder: (context, index) {
+                    return AllDisciplesWidget(
+                        name: mog[index].name,
+                        number: mog[index].contact,
+                        picture: mog[index].picture,
+                        gPSLocation: mog[index].homeAddress,
+                        digitalAdd: mog[index].digitalAdd,
+                        auxilliary: mog[index].auxilliary,
+                        birthdate: mog[index].birthday,
+                        shepherd: mog[index].shepherd);
+                  },
+                  separatorBuilder: (context, index) {
+                    return const Divider();
+                  },
+                  itemCount: mog.length);
+            }
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            } else {
+              return const Center(child: Text("Check Internet Connection"));
+            }
+          }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          String message = "This is a test message!";
+          List<String> recipents = number;
+
+          _sendSMS(message, recipents);
+        },
+        child: const Icon(Icons.mail),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.green,
+        shape: const CircularNotchedRectangle(),
+        child: Container(
+          height: 50,
+        ),
+      ),
     );
   }
 }
@@ -644,6 +924,7 @@ class _PapaNuwaState extends State<PapaNuwa> {
   final MemberController _memberController = MemberController();
 
   final List<Members> mog = [];
+  List<String> number = [];
 
   void initState() {
     _memberController.getAllMembers().then((member) {
@@ -652,7 +933,9 @@ class _PapaNuwaState extends State<PapaNuwa> {
           mog.add(element);
         }
 
-        setState(() {});
+        setState(() {
+          number = mog.map((member) => member.contact).toList();
+        });
         //  print("these are members $member");
       }
     });
@@ -682,22 +965,50 @@ class _PapaNuwaState extends State<PapaNuwa> {
         ),
         backgroundColor: Colors.green,
       ),
-      body: ListView.separated(
-          itemBuilder: (context, index) {
-            return AllDisciplesWidget(
-                name: mog[index].name,
-                number: mog[index].contact,
-                picture: mog[index].picture,
-                gPSLocation: mog[index].homeAddress,
-                digitalAdd: mog[index].digitalAdd,
-                auxilliary: mog[index].auxilliary,
-                birthdate: mog[index].birthday,
-                shepherd: mog[index].shepherd);
-          },
-          separatorBuilder: (context, index) {
-            return const Divider();
-          },
-          itemCount: mog.length),
+      body: FutureBuilder(
+          future: _memberController.getAllMembers(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.separated(
+                  itemBuilder: (context, index) {
+                    return AllDisciplesWidget(
+                        name: mog[index].name,
+                        number: mog[index].contact,
+                        picture: mog[index].picture,
+                        gPSLocation: mog[index].homeAddress,
+                        digitalAdd: mog[index].digitalAdd,
+                        auxilliary: mog[index].auxilliary,
+                        birthdate: mog[index].birthday,
+                        shepherd: mog[index].shepherd);
+                  },
+                  separatorBuilder: (context, index) {
+                    return const Divider();
+                  },
+                  itemCount: mog.length);
+            }
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            } else {
+              return const Center(child: Text("Check Internet Connection"));
+            }
+          }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          String message = "This is a test message!";
+          List<String> recipents = number;
+
+          _sendSMS(message, recipents);
+        },
+        child: const Icon(Icons.mail),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.green,
+        shape: const CircularNotchedRectangle(),
+        child: Container(
+          height: 50,
+        ),
+      ),
     );
   }
 }
@@ -714,6 +1025,7 @@ class _PapaNicholasState extends State<PapaNicholas> {
   final MemberController _memberController = MemberController();
 
   final List<Members> mog = [];
+  List<String> number = [];
 
   void initState() {
     _memberController.getAllMembers().then((member) {
@@ -722,7 +1034,9 @@ class _PapaNicholasState extends State<PapaNicholas> {
           mog.add(element);
         }
 
-        setState(() {});
+        setState(() {
+          number = mog.map((member) => member.contact).toList();
+        });
         //  print("these are members $member");
       }
     });
@@ -752,22 +1066,58 @@ class _PapaNicholasState extends State<PapaNicholas> {
         ),
         backgroundColor: Colors.green,
       ),
-      body: ListView.separated(
-          itemBuilder: (context, index) {
-            return AllDisciplesWidget(
-                name: mog[index].name,
-                number: mog[index].contact,
-                picture: mog[index].picture,
-                gPSLocation: mog[index].homeAddress,
-                digitalAdd: mog[index].digitalAdd,
-                auxilliary: mog[index].auxilliary,
-                birthdate: mog[index].birthday,
-                shepherd: mog[index].shepherd);
-          },
-          separatorBuilder: (context, index) {
-            return const Divider();
-          },
-          itemCount: mog.length),
+      body: FutureBuilder(
+          future: _memberController.getAllMembers(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.separated(
+                  itemBuilder: (context, index) {
+                    return AllDisciplesWidget(
+                        name: mog[index].name,
+                        number: mog[index].contact,
+                        picture: mog[index].picture,
+                        gPSLocation: mog[index].homeAddress,
+                        digitalAdd: mog[index].digitalAdd,
+                        auxilliary: mog[index].auxilliary,
+                        birthdate: mog[index].birthday,
+                        shepherd: mog[index].shepherd);
+                  },
+                  separatorBuilder: (context, index) {
+                    return const Divider();
+                  },
+                  itemCount: mog.length);
+            }
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            } else {
+              return const Center(child: Text("Check Internet Connection"));
+            }
+          }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          String message = "This is a test message!";
+          List<String> recipents = number;
+
+          _sendSMS(message, recipents);
+        },
+        child: const Icon(Icons.mail),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.green,
+        shape: const CircularNotchedRectangle(),
+        child: Container(
+          height: 50,
+        ),
+      ),
     );
   }
+}
+
+void _sendSMS(String message, List<String> recipents) async {
+  String _result = await sendSMS(message: message, recipients: recipents)
+      .catchError((onError) {
+    print(onError);
+  });
+  print(_result);
 }
