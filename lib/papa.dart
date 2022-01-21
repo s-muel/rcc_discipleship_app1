@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sms/flutter_sms.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'all_members_page.dart';
@@ -16,6 +17,7 @@ class _PapaState extends State<Papa> {
   final MemberController _memberController = MemberController();
 
   final List<Members> mog = [];
+  List<String> number = [];
 
   void initState() {
     _memberController.getAllMembers().then((member) {
@@ -24,7 +26,9 @@ class _PapaState extends State<Papa> {
           mog.add(element);
         }
 
-        setState(() {});
+        setState(() {
+          number = mog.map((member) => member.contact).toList();
+        });
         //  print("these are members $member");
       }
     });
@@ -85,6 +89,25 @@ class _PapaState extends State<Papa> {
               return const Center(child: Text("Check Internet Connection"));
             }
           }),
+            floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          String message = "This is a test message!";
+          List<String> recipents = number;
+
+          _sendSMS(message, recipents);
+        },
+        child: const Icon(Icons.mail),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.green,
+        shape: const CircularNotchedRectangle(),
+        child: Container(
+          height: 50,
+        ),
+      ),
+
+
     );
   }
 }
@@ -185,4 +208,11 @@ class PapaDisciplesWidget extends StatelessWidget {
       ],
     );
   }
+}
+void _sendSMS(String message, List<String> recipents) async {
+  String _result = await sendSMS(message: message, recipients: recipents)
+      .catchError((onError) {
+    print(onError);
+  });
+  print(_result);
 }
