@@ -61,18 +61,16 @@ class _MainPageState extends State<MainPage> {
             style: TextStyle(color: Colors.black),
           ),
           centerTitle: true,
-          
         ),
         body: ListView(
+          
           children: [
             // 1 MOG
             InkWell(
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return const Papa();
-                }
-                )
-                );
+                }));
               },
               child: MOGProfileWidget(
                   picture: "assets/images/papa.jpg",
@@ -80,6 +78,17 @@ class _MainPageState extends State<MainPage> {
                   numberOfDisciples: ""),
             ),
             // 2 MOG
+            InkWell(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const DetailsPage();
+                  }));
+                },
+                child: MOGProfileWidget(
+                    picture: "assets/images/papa_ernesto.jpg",
+                    name: "Pastor Bernard 2135",
+                    numberOfDisciples: "")),
+            // 3.2 MOG
             InkWell(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
