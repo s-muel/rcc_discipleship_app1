@@ -3,8 +3,12 @@
 import 'dart:async';
 // import 'dart:js';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:my_todo_app1/auth_view/login.dart';
 import 'package:my_todo_app1/main_page.dart';
+
+import 'auth_view/signup.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -17,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
   startTimer() {
     Timer(const Duration(seconds: 4), () {
       Route newRoute =
-          MaterialPageRoute(builder: (context) => const MainPage());
+          MaterialPageRoute(builder: (context) => Newlogin( firebaseApp: Firebase.app(),));
       Navigator.push(context, newRoute);
     });
   }

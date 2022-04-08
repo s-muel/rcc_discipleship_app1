@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 // import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:my_todo_app1/add_member.dart';
+import 'package:my_todo_app1/auth_view/login.dart';
 import 'package:my_todo_app1/detailpage2.dart';
 // import 'package:my_todo_app1/add_member_page.dart';
 // import 'package:my_todo_app1/create_todo_view.dart';
@@ -23,6 +26,19 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   final PapaNicholas _nicholas = const PapaNicholas();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  signOut() async {
+    _auth.signOut();
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return Newlogin(
+        firebaseApp: Firebase.app(),
+      );
+    }));
+
+    // final googleSignIn = GoogleSignIn();
+    // await googleSignIn.signOut();
+  }
 
   final MemberController _memberController = MemberController();
   final List<Members> papa_ernesto = [];
@@ -50,6 +66,9 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          actions: [
+            TextButton(onPressed: signOut, child: const Text("Logout"))
+          ],
           elevation: 5,
           backgroundColor: Colors.white,
           leading: const Center(
@@ -63,7 +82,6 @@ class _MainPageState extends State<MainPage> {
           centerTitle: true,
         ),
         body: ListView(
-          
           children: [
             // 1 MOG
             InkWell(
